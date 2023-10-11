@@ -1,7 +1,7 @@
 .container {
-  flex:flex;
+  display: flex;
   flex-direction: column;
-  padding:2em;
+  padding: 2em;
   border: 7px solid rgb(206, 205, 205);
   margin: 5%;
 }
@@ -11,7 +11,6 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
- 
   margin: 1em 1em;
 }
 
@@ -37,10 +36,11 @@
   color: white;
 }
 
-.logo{
-  margin-left:5%;
+.logo {
+  margin-left: 5%;
   margin-bottom: 10%;
 }
+
 .App-link {
   color: #61dafb;
 }
@@ -55,22 +55,12 @@
   }
 }
 
- ul {
-  list-style: none;  
- 
-}
-a {
-  text-decoration: none;
-}
-.custom-link:active {
-  color: #080808;
-  text-decoration: none;
+ul {
+  list-style: none;
 }
 
-.custom-link:hover {
-  color: #080808;
-  background-color: #17c208;
- 
+a {
+  text-decoration: none;
 }
 
 .custom-link {
@@ -79,5 +69,16 @@ a {
   font-size: 1em;
   color: #282c34;
   font-weight: 700;
-  text-align: left;  
+  text-align: left;
+  text-shadow: 0 0 0.1em #1d1d1d;
+}
+
+.custom-link:active {
+  color: #080808;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: #080808;
+  background-color: #17c208;
 }
