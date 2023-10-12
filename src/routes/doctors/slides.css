@@ -11,6 +11,8 @@
   white-space: nowrap;
   display: flex;
   overflow: hidden;
+  align-items: center;
+  width: 100%;
 }
 
 .home_item {
@@ -74,5 +76,6 @@
     white-space: nowrap;
     display: flex;
     align-items: center;
+    width: 100%;
   }
 }
