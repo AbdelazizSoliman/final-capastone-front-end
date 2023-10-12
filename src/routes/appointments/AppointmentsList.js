@@ -1,8 +1,12 @@
 import React from 'react';
+import SideNav from '../../components/home/SideNav';
 
 const AppointmentsList = () => (
   <div>
-    Appointments List
+    <SideNav />
+    <div>
+      Appointments List
+    </div>
   </div>
 );
 

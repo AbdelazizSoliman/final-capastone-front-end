@@ -10,16 +10,16 @@ function SideNav() {
           <Link to="/" className="custom-link">DOCTORS</Link>
         </li>
         <li className="custom-link">
-          <Link to="/" className="custom-link">MY APPOINTMENTS</Link>
+          <Link to="/appointments" className="custom-link">MY APPOINTMENTS</Link>
         </li>
         <li className="custom-link">
-          <Link to="/" className="custom-link">MAKE APPOINTMENTS</Link>
+          <Link to="/appointments/new" className="custom-link">MAKE APPOINTMENTS</Link>
         </li>
         <li className="custom-link">
-          <Link to="/" className="custom-link">ADD DOCTOR</Link>
+          <Link to="/doctors/new" className="custom-link">ADD DOCTOR</Link>
         </li>
         <li className="custom-link">
-          <Link to="/" className="custom-link">DELETE DOCTOR</Link>
+          <Link to="/doctors/delete" className="custom-link">DELETE DOCTOR</Link>
         </li>
       </ul>
     </div>
