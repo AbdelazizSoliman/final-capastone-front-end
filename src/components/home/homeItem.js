@@ -10,9 +10,9 @@ const HomeItem = ({
   <div className="home_item">
     <Link to="/doctor/details">
       <img src="https://picsum.photos/1000/1000" alt="" width="100%" />
-      <h3>
+      <h5>
         {name}
-      </h3>
+      </h5>
     </Link>
     <p>Test tex</p>
   </div>

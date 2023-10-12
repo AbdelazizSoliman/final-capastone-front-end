@@ -42,6 +42,12 @@
     white-space: nowrap;
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .home_item {   
+      min-width: 300px;
+      cursor: pointer;
   }
 }
 
@@ -59,15 +65,15 @@
     /* Increase gap between items on larger screens */
   }
 
-  .home_item {
-    min-width: auto;
-
-    /* Reset min-width for larger screens */
-  }
+   .home_item {
+       min-width: 300px;
+       cursor: pointer;
+   }
 
   .slideshowSlider {
     white-space: nowrap;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+
   }
 }

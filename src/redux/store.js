@@ -1,10 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
-import homeReducer from './reducers/homeSlice';
+import doctorsReducer from './doctors/doctorSlice';
+import appointmentsReducer from './appointments/appointmentSlice';
+import patientsReducer from './patients/patientSlice';
 
-const Store = configureStore({
+const store = configureStore({
   reducer: {
-    doctors: homeReducer,
+    doctors: doctorsReducer,
+    appointments: appointmentsReducer,
+    patients: patientsReducer,
   },
 });
 
-export default Store;
+const doctorsSelector = (state) => state.doctors;
+const appointmentsSelector = (state) => state.appointments;
+const patientsSelector = (state) => state.patients;
+
+export default store;
+export { doctorsSelector, appointmentsSelector, patientsSelector };
