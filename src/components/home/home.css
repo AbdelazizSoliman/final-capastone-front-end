@@ -45,9 +45,9 @@
     align-items: center;
   }
 
-  .home_item {   
-      min-width: 300px;
-      cursor: pointer;
+  .home_item {
+    min-width: 300px;
+    cursor: pointer;
   }
 }
 
@@ -65,15 +65,14 @@
     /* Increase gap between items on larger screens */
   }
 
-   .home_item {
-       min-width: 300px;
-       cursor: pointer;
-   }
+  .home_item {
+    min-width: 300px;
+    cursor: pointer;
+  }
 
   .slideshowSlider {
     white-space: nowrap;
     display: flex;
     align-items: center;
-
   }
 }
