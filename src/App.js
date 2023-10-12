@@ -13,22 +13,20 @@ import './App.css';
 function App() {
   return (
     <div className="container">
-      <div className="logo">Logo</div>
-      <div className="App">
+      <div className="App-logo">Logo</div>
+      <section className="App">
         <SideNav />
-        <div className="w-full p-4">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/doctors" element={<DoctorsList />} />
-            <Route path="/appointments" element={<AppointmentsList />} />
-            <Route path="/doctor/details" element={<DoctorsDetails />} />
-            <Route path="/adddoctor" element={<AddDoctor />} />
-            <Route path="/deletedoctor" element={<DeleteDoctor />} />
-            <Route path="/specializations" element={<SpecializationsList />} />
-          </Routes>
-        </div>
-      </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/doctors" element={<DoctorsList />} />
+          <Route path="/appointments" element={<AppointmentsList />} />
+          <Route path="/doctor/details" element={<DoctorsDetails />} />
+          <Route path="/adddoctor" element={<AddDoctor />} />
+          <Route path="/deletedoctor" element={<DeleteDoctor />} />
+          <Route path="/specializations" element={<SpecializationsList />} />
+        </Routes>
+      </section>
     </div>
   );
 }

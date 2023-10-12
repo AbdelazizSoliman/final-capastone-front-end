@@ -8,8 +8,8 @@ const initialState = {
   errMsg: '',
 };
 
-const doctorsSlice = createSlice({
-  name: 'doctors',
+const HomeSlice = createSlice({
+  name: 'home',
   initialState,
   extraReducers: (builder) => {
     builder
@@ -27,4 +27,4 @@ const doctorsSlice = createSlice({
   },
 });
 
-export default doctorsSlice.reducer;
+export default HomeSlice.reducer;
