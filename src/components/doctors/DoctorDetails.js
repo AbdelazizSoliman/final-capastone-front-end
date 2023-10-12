@@ -5,5 +5,4 @@ const DoctorDetails = () => (
     Doctor Details
   </div>
 );
-
 export default DoctorDetails;
