@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchDoctors from '../thunk';
+import fetchDoctors from './doctorThunk';
 
 const initialState = {
   doctors: [],
