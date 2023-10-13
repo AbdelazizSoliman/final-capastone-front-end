@@ -1,30 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
+import fetchAppointments from './appointmentThunk';
 
 const initialState = {
   appointments: [],
-  ready: true,
-  errors: null,
-  addSuccess: false,
+  isLoading: true,
+  error: false,
+  errMsg: '',
 };
 
 const appointmentsSlice = createSlice({
   name: 'appointments',
   initialState,
-  reducers: {
-    setAppointments: (state, action) => {
-      state.appointments = action.payload;
-    },
-    setErrors: (state, action) => {
-      state.errors = action.payload;
-    },
-    setReady: (state, action) => {
-      state.ready = action.payload;
-    },
-    setAddSuccess: (state, action) => {
-      state.addSuccess = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAppointments.pending, (state) => {
+        state.isLoading = true;
+        console.log(state.isLoading);
+      })
+      .addCase(fetchAppointments.fulfilled, (state, action) => {
+        state.appointments = action.payload;
+        console.log(state.appointments);
+        state.isLoading = false;
+      }).addCase(fetchAppointments.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = true;
+        console.log(state.error);
+        state.errMsg = action.payload.error;
+      });
   },
 });
 
-export const { setAppointments, setErrors, setReady, setAddSuccess } = appointmentsSlice.actions;
 export default appointmentsSlice.reducer;
