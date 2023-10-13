@@ -1,56 +1,16 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  border: 6px solid rgb(206, 205, 205);
-  margin: 4%;
+li:hover {
+  background-color: #00796B;
+  cursor: pointer;
 }
 
-.App {
-  text-align: center;
-  display: flex;
-  gap: 2em;
-  overflow: hidden;
+li a {
+  color: #009688;
 }
 
-ul {
-  list-style: none;
+li:hover a {
+  color: white;
 }
 
-a {
-  text-decoration: none;
-}
-
-.custom-link {
-  padding: 0.5em 0.3em;
-  text-decoration: none;
-  font-size: 1em;
-  color: #282c34;
-  font-weight: 700;
-  text-align: left;
-  text-shadow: 0 0 0.1em #1d1d1d;
-}
-
-.custom-link:active {
-  color: #080808;
-  text-decoration: none;
-}
-
-.custom-link:hover {
-  color: #080808;
-  background-color: #17c208;
-}
-
-/* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
-  .App {
-    flex-direction: column;
-    height: 100vh;
-
-    /* This sets the element's height to 100% of the viewport height */
-    text-align: center;
-    display: flex;
-    gap: 3px;
-    overflow: hidden;
-  }
+.btn-outline-success {
+  margin-top: 10rem;
 }

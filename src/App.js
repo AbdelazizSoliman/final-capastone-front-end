@@ -10,19 +10,16 @@ import './App.css';
 
 function App() {
   return (
-    <div className="container">
-      <div className="App-logo">Logo</div>
-      <section className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/appointments" element={<AppointmentsList />} />
-          <Route path="/appointments/new" element={<NewAppointment />} />
-          <Route path="/doctor/details" element={<DoctorsDetails />} />
-          <Route path="/doctors/new" element={<AddDoctor />} />
-          <Route path="/doctors/delete" element={<DeleteDoctor />} />
-        </Routes>
-      </section>
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/appointments" element={<AppointmentsList />} />
+        <Route path="/appointments/new" element={<NewAppointment />} />
+        <Route path="/doctor/details" element={<DoctorsDetails />} />
+        <Route path="/doctors/new" element={<AddDoctor />} />
+        <Route path="/doctors/delete" element={<DeleteDoctor />} />
+      </Routes>
     </div>
   );
 }
