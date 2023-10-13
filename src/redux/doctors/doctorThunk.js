@@ -13,4 +13,15 @@ const fetchDoctors = createAsyncThunk('doctors/fetchDoctors', async (thunkAPI) =
   }
 });
 
+export const deleteDoctor = createAsyncThunk('doctors/deleteDoctor', async (doctorId, thunkAPI) => {
+  try {
+    // Make an API call to delete the doctor by ID using Axios
+    await axios.delete(`${url}/${doctorId}`);
+
+    return doctorId;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export default fetchDoctors;
