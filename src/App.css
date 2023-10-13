@@ -14,3 +14,13 @@ li:hover a {
 .btn-outline-success {
   margin-top: 10rem;
 }
+
+.delete-item:hover {
+  background-color: #00caaf7c;
+}
+
+.specialization {
+  color: #698683;
+  font-size: medium;
+  margin-left: 1rem;
+}
