@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchDoctors from './doctorThunk';
+import fetchDoctors, { deleteDoctor } from './doctorThunk';
 
 const initialState = {
   doctors: [],
@@ -13,13 +13,27 @@ const doctorsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      // Fetch doctors
       .addCase(fetchDoctors.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(fetchDoctors.fulfilled, (state, action) => {
         state.doctors = action.payload;
         state.isLoading = false;
-      }).addCase(fetchDoctors.rejected, (state, action) => {
+      })
+      .addCase(fetchDoctors.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = true;
+        state.errMsg = action.payload.error;
+      })
+      // Delete Doctor
+      .addCase(deleteDoctor.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteDoctor.fulfilled, (state, action) => {
+        state.doctors = state.doctors.filter((doctor) => doctor.id !== action.payload);
+      })
+      .addCase(deleteDoctor.rejected, (state, action) => {
         state.isLoading = false;
         state.error = true;
         state.errMsg = action.payload.error;
