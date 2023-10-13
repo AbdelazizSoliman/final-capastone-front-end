@@ -22,6 +22,9 @@ const Home = () => {
           <DoctorItem
             key={doctor.id}
             name={doctor.name}
+            specialization={doctor.specialization.name}
+            timestart={doctor.time_start}
+            timeend={doctor.time_end}
           />
         ))}
       </div>
