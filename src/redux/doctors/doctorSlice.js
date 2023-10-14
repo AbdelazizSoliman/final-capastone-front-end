@@ -33,6 +33,11 @@ const doctorsSlice = createSlice({
         state.doctors = action.payload;
         state.isLoading = false;
       })
+      .addCase(fetchDoctors.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = true;
+        state.errMsg = action.payload.error;
+      })
       .addCase(fetchSpecializations.fulfilled, (state, action) => {
         state.specializations = action.payload;
         state.isLoading = false;
@@ -42,11 +47,6 @@ const doctorsSlice = createSlice({
       })
       .addCase(fetchSpecializations.rejected, (state, action) => {
         state.error = action.error.message || 'Failed to fetch specializations';
-      })
-      .addCase(fetchDoctors.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = true;
-        state.errMsg = action.payload.error;
       });
   },
 });

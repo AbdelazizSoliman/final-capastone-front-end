@@ -12,12 +12,22 @@ export const fetchDoctors = createAsyncThunk('doctors/fetchDoctors', async (thun
   }
 });
 
+export const deleteDoctor = createAsyncThunk('doctors/deleteDoctor', async (doctorId, thunkAPI) => {
+  try {
+    // Make an API call to delete the doctor by ID using Axios
+    await axios.delete(`${url}/${doctorId}`);
+    return doctorId;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export const addDoctor = createAsyncThunk(
   'doctors/addDoctor',
   async (doctorInfo) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/v1/doctors',
+        `${url}`,
         doctorInfo,
         {
           headers: {
