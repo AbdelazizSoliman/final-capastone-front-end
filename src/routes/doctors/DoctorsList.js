@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import fetchDoctors from '../../redux/doctors/doctorThunk';
+import { fetchDoctors } from '../../redux/doctors/doctorThunk';
 import SideNav from '../../components/home/SideNav';
 import DoctorItem from '../../components/home/doctorItem';
 

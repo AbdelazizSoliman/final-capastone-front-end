@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchDoctors, { deleteDoctor } from './doctorThunk';
+import { fetchDoctors, addDoctor, fetchSpecializations } from './doctorThunk';
 
 const initialState = {
   doctors: [],
+  specializations: [],
   isLoading: true,
   error: false,
   errMsg: '',
@@ -13,7 +14,18 @@ const doctorsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      // Fetch doctors
+      .addCase(addDoctor.pending, (state) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(addDoctor.fulfilled, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addDoctor.rejected, (state, action) => {
+        state.addingDoctor = false;
+        state.error = action.error.message;
+      })
       .addCase(fetchDoctors.pending, (state) => {
         state.isLoading = true;
       })
@@ -26,17 +38,15 @@ const doctorsSlice = createSlice({
         state.error = true;
         state.errMsg = action.payload.error;
       })
-      // Delete Doctor
-      .addCase(deleteDoctor.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(deleteDoctor.fulfilled, (state, action) => {
-        state.doctors = state.doctors.filter((doctor) => doctor.id !== action.payload);
-      })
-      .addCase(deleteDoctor.rejected, (state, action) => {
+      .addCase(fetchSpecializations.fulfilled, (state, action) => {
+        state.specializations = action.payload;
         state.isLoading = false;
-        state.error = true;
-        state.errMsg = action.payload.error;
+      })
+      .addCase(fetchSpecializations.pending, (state) => {
+        state.error = null;
+      })
+      .addCase(fetchSpecializations.rejected, (state, action) => {
+        state.error = action.error.message || 'Failed to fetch specializations';
       });
   },
 });
