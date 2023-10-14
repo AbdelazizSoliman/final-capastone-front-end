@@ -6,15 +6,15 @@ import SideNav from '../../components/home/SideNav';
 
 const AppointmentsList = () => {
   const dispatch = useDispatch();
-  const [appointmentsArray, setAppointmentsArray] = useState([]);
+  const [appointmentsArr, setAppointmentsArray] = useState([]);
   const [displayedAppointments, setDisplayedAppointments] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (appointmentsArray.length === 0) {
+    if (appointmentsArr.length === 0) {
       dispatch(fetchAppointments());
     }
-  }, [dispatch, appointmentsArray]);
+  }, [dispatch, appointmentsArr]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/appointments')
@@ -29,10 +29,10 @@ const AppointmentsList = () => {
 
   const shiftAppointments = (direction) => {
     const increment = direction === 'left' ? -1 : 1;
-    const newIndex = (currentIndex + increment + appointmentsArray.length) % appointmentsArray.length;
+    const newIndex = (currentIndex + increment + appointmentsArr.length) % appointmentsArr.length;
     setCurrentIndex(newIndex);
-    const endIndex = newIndex + 3 >= appointmentsArray.length ? appointmentsArray.length : newIndex + 3;
-    setDisplayedAppointments(appointmentsArray.slice(newIndex, endIndex));
+    const endIndex = newIndex + 3 >= appointmentsArr.length ? appointmentsArr.length : newIndex + 3;
+    setDisplayedAppointments(appointmentsArr.slice(newIndex, endIndex));
   };
 
   return (
