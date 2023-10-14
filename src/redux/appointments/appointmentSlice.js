@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchAppointments from './appointmentThunk';
+import { fetchAppointments } from './appointmentThunk';
 
 const initialState = {
   appointments: [],
