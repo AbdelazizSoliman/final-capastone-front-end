@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import fetchDoctors, { deleteDoctor } from '../../redux/doctors/doctorThunk';
+import { fetchDoctors, deleteDoctor } from '../../redux/doctors/doctorThunk';
 import SideNav from '../../components/home/SideNav';
 import ItemToDelete from '../../components/home/ItemToDelete';
 
