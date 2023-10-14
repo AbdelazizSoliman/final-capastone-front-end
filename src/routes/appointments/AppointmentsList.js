@@ -38,6 +38,7 @@ const AppointmentsList = () => {
               <p><strong className="text-success">Time:</strong> {appointment.time_of_appointment}</p>
               <p><strong className="text-primary">City:</strong> {appointment.city}</p>
               <p><strong className="text-primary">Doctor:</strong> {appointment.doctor_name}</p>
+              <p><strong className="text-primary">Patient:</strong> {appointment.patient_name}</p>
             </li>
           ))}
         </ul>
