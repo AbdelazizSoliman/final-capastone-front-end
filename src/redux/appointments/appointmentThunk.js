@@ -14,4 +14,16 @@ export const fetchAppointments = createAsyncThunk('appointments/fetchAppointment
   }
 });
 
-export default fetchAppointments;
+export const createNewAppointment = createAsyncThunk(
+  'appointments/createNewAppointment',
+  async (formData) => {
+    try {
+      const response = await axios.post(url, formData);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
+    }
+  }
+);
+
+export default { fetchAppointments, createNewAppointment };
