@@ -6,11 +6,9 @@ function DoctorDetails() {
     <div className="h-screen flex lg:overflow-hidden bg-white">
       {/* Static sidebar for desktop */}
       <div className="hidden lg:flex lg:flex-shrink-0">
-        <SideBar />
+        <SideNav />
       </div>
       <div className="flex flex-col min-w-0 flex-1 lg:overflow-hidden mt-32 lg:mt-1">
-        {/* Hamburger for mobile */}
-        <HamBurger />
         <div className="flex flex-col items-center">
           <Details />
         </div>
