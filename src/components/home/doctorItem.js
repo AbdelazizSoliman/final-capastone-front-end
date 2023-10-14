@@ -9,7 +9,7 @@ const HomeItem = ({
 
   <div className="home_item">
     <Link to="/doctor/details">
-      <img src="https://picsum.photos/1000/1000" alt="" width="100%" />
+      <img src="https://picsum.photos/1000/1000" alt="Error" width="80%" />
       <h5>
         {name}
       </h5>
