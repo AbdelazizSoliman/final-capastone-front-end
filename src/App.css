@@ -24,6 +24,7 @@ li:hover a {
   font-size: medium;
   margin-left: 1rem;
 }
+
 .custom-link:active {
   color: #080808;
   text-decoration: none;
