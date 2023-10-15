@@ -1,54 +1,64 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { createNewAppointment } from '../../redux/appointments/appointmentThunk';
+import { fetchDoctors } from '../../redux/doctors/doctorThunk';
 import SideNav from '../../components/home/SideNav';
 
 const NewAppointment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [appointmentInfo, setAppointmentInfo] = useState({
-    date_of_appointment: '',
-    time_of_appointment: '',
+  const [appointmentData, setAppointmentData] = useState({
+    doctorName: '', // Selected doctor's name
+    date: '',
+    time: '',
     city: '',
-    doctor_id: '',
-    patient_id: '', // Replace with the actual patient ID
   });
-
+  const { doctors } = useSelector((store) => store.doctors);
   const [error, setError] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setAppointmentInfo({ ...appointmentInfo, [name]: value });
-  };
+  useEffect(() => {
+    if (doctors.length === 0) {
+      // Dispatch an action to fetch the list of doctors if needed
+     dispatch(fetchDoctors());
+    }
+  }, [dispatch, doctors]);
 
   const handleCreateAppointment = async (e) => {
     e.preventDefault();
 
     if (
-      appointmentInfo.date_of_appointment.length === 0 ||
-      appointmentInfo.time_of_appointment.length === 0 ||
-      appointmentInfo.city.length === 0 ||
-      appointmentInfo.doctor_id.length === 0 ||
-      appointmentInfo.patient_id.length === 0
+      appointmentData.date.length === 0 ||
+      appointmentData.time.length === 0 ||
+      appointmentData.city.length === 0 ||
+      appointmentData.doctorName.length === 0
     ) {
       toast.warn('Please fill in all fields');
       return;
     }
 
+    // Find the doctor object by name
+    const selectedDoctor = doctors.find((doctor) => doctor.name === appointmentData.doctorName);
+
+    if (!selectedDoctor) {
+      toast.warn('Selected doctor not found');
+      return;
+    }
+
+    // Extract the doctor's ID
+    const doctorId = selectedDoctor.id;
+
     try {
       // Dispatch the action to create a new appointment
-      dispatch(createNewAppointment(appointmentInfo));
+      dispatch(createNewAppointment({ ...appointmentData, doctor_id: doctorId }));
 
       // Reset the form
-      setAppointmentInfo({
-        date_of_appointment: '',
-        time_of_appointment: '',
+      setAppointmentData({
+        doctorName: '',
+        date: '',
+        time: '',
         city: '',
-        doctor_id: '',
-        patient_id: '', // Replace with the actual patient ID
       });
 
       toast.success('Appointment created successfully!', {
@@ -62,11 +72,18 @@ const NewAppointment = () => {
     }
   };
 
+  const handleInputChange = (e) => {
+    setAppointmentData({
+      ...appointmentData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-8">
-        <SideNav />
+          <SideNav />
         </div>
         <div className="col-md-4">
           <form>
@@ -77,9 +94,9 @@ const NewAppointment = () => {
               <input
                 type="date"
                 className="form-control"
-                name="date_of_appointment"
-                value={appointmentInfo.date_of_appointment}
-                onChange={handleChange}
+                name="date"
+                value={appointmentData.date}
+                onChange={handleInputChange}
               />
             </div>
             <div className="form-group">
@@ -87,43 +104,46 @@ const NewAppointment = () => {
               <input
                 type="time"
                 className="form-control"
-                name="time_of_appointment"
-                value={appointmentInfo.time_of_appointment}
-                onChange={handleChange}
+                name="time"
+                value={appointmentData.time}
+                onChange={handleInputChange}
               />
             </div>
             <div className="form-group">
-              <label>City</label>
-              <input
-                type="text"
-                className="form-control"
+              <label>Select a City</label>
+              <select
+                className="form-select"
                 name="city"
-                value={appointmentInfo.city}
-                onChange={handleChange}
-              />
+                value={appointmentData.city}
+                onChange={handleInputChange}
+              >
+                <option value="">Select a city</option>
+                <option value="City1">Cairo</option>
+                <option value="City2">Marrakech</option>
+                {/* Add more cities as needed */}
+              </select>
             </div>
             <div className="form-group">
-              <label>Doctor ID</label>
-              <input
-                type="text"
-                className="form-control"
-                name="doctor_id"
-                value={appointmentInfo.doctor_id}
-                onChange={handleChange}
-              />
+              <label>Select a Doctor</label>
+              <select
+                className="form-select"
+                name="doctorName"
+                value={appointmentData.doctorName}
+                onChange={handleInputChange}
+              >
+                <option value="">Select a doctor</option>
+                {doctors.map((doctor) => (
+                  <option key={doctor.id} value={doctor.name}>
+                    {doctor.name}
+                  </option>
+                ))}
+              </select>
             </div>
-            {/* Replace the following input with the actual patient ID */}
-            <div className="form-group">
-              <label>Patient ID</label>
-              <input
-                type="text"
-                className="form-control"
-                name="patient_id"
-                value={appointmentInfo.patient_id}
-                onChange={handleChange}
-              />
-            </div>
-            <button type="button" className="btn btn-primary" onClick={handleCreateAppointment}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={handleCreateAppointment}
+            >
               Create Appointment
             </button>
           </form>
