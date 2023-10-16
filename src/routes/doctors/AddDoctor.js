@@ -12,7 +12,7 @@ const AddDoctor = () => {
 
   const [doctorInfo, setDoctorInfo] = useState({
     name: '',
-    specialization: '',
+    specialization_id: '',
     picture: '',
     price: '',
     phone_number: '',
