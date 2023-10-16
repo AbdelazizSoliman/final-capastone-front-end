@@ -45,26 +45,28 @@ const NewAppointment = () => {
     }
 
     // Find the doctor object by name
-    const selectedDoctor = doctors.find((doctor) => doctor.name === appointmentData.doctorName);
-    const selectedPatient = patients.find((patient) => patient.name === appointmentData.patientName);
+    const selecedDoc = doctors.find((doctor) => doctor.name === appointmentData.doctorName);
+    const selectPat = patients.find((patient) => patient.name === appointmentData.patientName);
 
-    if (!selectedDoctor) {
+    if (!selecedDoc) {
       toast.warn('Selected doctor not found');
       return;
     }
 
-    if (!selectedPatient) {
+    if (!selectPat) {
       toast.warn('Selected patient not found');
       return;
     }
 
     // Extract the doctor's ID
-    const doctorId = selectedDoctor.id;
-    const patientId = selectedPatient.id;
+    const doctorId = selecedDoc.id;
+    const patientId = selectPat.id;
 
     try {
       // Dispatch the action to create a new appointment
-      dispatch(createNewAppointment({ ...appointmentData, doctor_id: doctorId, patient_id: patientId }));
+      dispatch(
+        createNewAppointment({ ...appointmentData, doctor_id: doctorId, patient_id: patientId }),
+      );
 
       // Reset the form
       setAppointmentData({
