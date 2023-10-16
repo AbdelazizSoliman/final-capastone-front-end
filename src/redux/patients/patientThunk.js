@@ -12,3 +12,4 @@ export const fetchPatients = createAsyncThunk('patients/fetchPatients', async (t
   }
 });
 
+export default { fetchPatients };

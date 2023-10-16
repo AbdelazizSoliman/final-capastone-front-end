@@ -24,7 +24,7 @@ const patientsSlice = createSlice({
         state.isLoading = false;
         state.error = true;
         state.errMsg = action.payload.error;
-      })
+      });
   },
 });
 

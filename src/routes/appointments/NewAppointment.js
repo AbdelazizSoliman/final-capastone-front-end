@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -35,11 +34,11 @@ const NewAppointment = () => {
     e.preventDefault();
 
     if (
-      appointmentData.date_of_appointment.length === 0 || // Updated field name
-      appointmentData.time_of_appointment.length === 0 || // Updated field name
-      appointmentData.city.length === 0 ||
-      appointmentData.doctorName.length === 0 ||
-      appointmentData.patientName.length === 0
+      appointmentData.date_of_appointment.length === 0 // Updated field name
+      || appointmentData.time_of_appointment.length === 0 // Updated field name
+      || appointmentData.city.length === 0
+      || appointmentData.doctorName.length === 0
+      || appointmentData.patientName.length === 0
     ) {
       toast.warn('Please fill in all fields');
       return;
@@ -105,7 +104,7 @@ const NewAppointment = () => {
             <h2>Create New Appointment</h2>
             {error && <p>{error}</p>}
             <div className="form-group">
-              <label>Date of Appointment</label>
+              <div>Date of Appointment</div>
               <input
                 type="date"
                 className="form-control"
@@ -115,7 +114,7 @@ const NewAppointment = () => {
               />
             </div>
             <div className="form-group">
-              <label>Time of Appointment</label>
+              <div>Time of Appointment</div>
               <input
                 type="time"
                 className="form-control"
@@ -125,7 +124,7 @@ const NewAppointment = () => {
               />
             </div>
             <div className="form-group">
-              <label>Select a City</label>
+              <div>Select a City</div>
               <select
                 className="form-select"
                 name="city"
@@ -139,7 +138,7 @@ const NewAppointment = () => {
               </select>
             </div>
             <div className="form-group">
-              <label>Select a Doctor</label>
+              <div>Select a Doctor</div>
               <select
                 className="form-select"
                 name="doctorName"
@@ -156,7 +155,7 @@ const NewAppointment = () => {
             </div>
 
             <div className="form-group">
-              <label>Select a Patient</label>
+              <div>Select a Patient</div>
               <select
                 className="form-select"
                 name="patientName"
