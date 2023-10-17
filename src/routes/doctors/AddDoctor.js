@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { addDoctor, fetchSpecializations } from '../../redux/doctors/doctorThunk';
 import SideNav from '../../components/home/SideNav';
+import './doctor.css';
 
 const AddDoctor = () => {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-
   const [doctorInfo, setDoctorInfo] = useState({
     name: '',
     specialization_id: '',
@@ -19,13 +18,14 @@ const AddDoctor = () => {
     time_start: '',
     time_end: '',
   });
-
   const [error, setError] = useState(null);
+
   useEffect(() => {
     dispatch(fetchSpecializations());
   }, [dispatch]);
 
   const specializations = useSelector((state) => state.doctors.specializations);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDoctorInfo({ ...doctorInfo, [name]: value });
@@ -33,6 +33,7 @@ const AddDoctor = () => {
 
   const handleAddDoctor = async (e) => {
     e.preventDefault();
+
     if (
       doctorInfo.name.length === 0
       || doctorInfo.specialization_id.length === 0
@@ -68,14 +69,15 @@ const AddDoctor = () => {
   };
 
   return (
-    <div>
+    <div className="d-flex align-items-center justify-content-center bg-green">
       <SideNav />
-      <div>
+      <div className="home_component">
+
         <form>
           <h2>Add Doctor</h2>
           {error && <p>{error}</p>}
           <input placeholder="Name" name="name" value={doctorInfo.name} onChange={handleChange} />
-          Start
+          <div>Start</div>
           <input
             className="form-control"
             placeholder="Available from"
@@ -85,7 +87,7 @@ const AddDoctor = () => {
             onChange={handleChange}
             required
           />
-          End
+          <div>End</div>
           <input
             className="form-control"
             placeholder="Available end"
@@ -95,6 +97,7 @@ const AddDoctor = () => {
             onChange={handleChange}
             required
           />
+          <div>Select Specialization</div>
           <select name="specialization_id" value={doctorInfo.specialization_id} onChange={handleChange}>
             <option value="">Select Specialization</option>
             {specializations.map((spec) => (
