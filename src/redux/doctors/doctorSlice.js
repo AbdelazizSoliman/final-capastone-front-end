@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchDoctors, addDoctor, fetchSpecializations } from './doctorThunk';
+import {
+  fetchDoctors, addDoctor, fetchSpecializations,
+  fetchDoctorDetails,
+} from './doctorThunk';
 
 const initialState = {
   doctors: [],
@@ -35,6 +38,18 @@ const doctorsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchDoctors.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = true;
+        state.errMsg = action.payload.error;
+      })
+      .addCase(fetchDoctorDetails.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchDoctorDetails.fulfilled, (state, action) => {
+        state.doctors = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchDoctorDetails.rejected, (state, action) => {
         state.isLoading = false;
         state.error = true;
         state.errMsg = action.payload.error;

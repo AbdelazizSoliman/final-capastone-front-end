@@ -23,7 +23,7 @@ const AppointmentsList = () => {
         setDisplayedAppointments(response.data.slice(0, 3));
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        throw new Error(error.response?.data?.error || 'Failed to fetch appointments');
       });
   }, []);
 

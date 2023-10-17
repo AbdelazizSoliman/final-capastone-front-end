@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 
-const HomeItem = ({
-  name, specialization, timeStart, timeEnd,
+const DoctorItem = ({
+  id, name, specialization, timestart, timeend,
 }) => (
 
   <div className="home_item">
-    <Link to="/doctor/details">
+    <Link to={`/doctors/details/1${id}`}>
       <img src="https://picsum.photos/1000/1000" alt="Error" width="80%" />
       <h5>
         {name}
@@ -16,18 +16,19 @@ const HomeItem = ({
     </Link>
     <p>{specialization}</p>
     <p>Start</p>
-    <p>{timeStart}</p>
+    <p>{timestart}</p>
     <p>End</p>
-    <p>{timeEnd}</p>
+    <p>{timeend}</p>
   </div>
 
 );
 
-HomeItem.propTypes = {
+DoctorItem.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   specialization: PropTypes.string.isRequired,
-  timeStart: PropTypes.string.isRequired,
-  timeEnd: PropTypes.string.isRequired,
+  timestart: PropTypes.string.isRequired,
+  timeend: PropTypes.string.isRequired,
 };
 
-export default HomeItem;
+export default DoctorItem;

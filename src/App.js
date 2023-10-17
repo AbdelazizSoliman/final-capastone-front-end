@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './routes/doctors/DoctorsList';
-import DoctorsDetails from './routes/doctors/DoctorDetails';
+import DoctorDetails from './routes/doctors/DoctorDetails';
 import AddDoctor from './routes/doctors/AddDoctor';
 import DeleteDoctor from './routes/doctors/DeleteDoctor';
 import AppointmentsList from './routes/appointments/AppointmentsList';
@@ -16,7 +16,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/appointments" element={<AppointmentsList />} />
         <Route path="/appointments/new" element={<NewAppointment />} />
-        <Route path="/doctor/details" element={<DoctorsDetails />} />
+        <Route path="/doctors/details/:id" element={<DoctorDetails />} />
         <Route path="/doctors/new" element={<AddDoctor />} />
         <Route path="/doctors/delete" element={<DeleteDoctor />} />
       </Routes>

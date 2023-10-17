@@ -21,7 +21,7 @@ const DeleteDoctor = () => {
   };
 
   return (
-    <div className="h-100 bg-green d-flex">
+    <div className="d-flex align-items-center justify-content-center bg-green">
       <SideNav />
 
       <div className="p-5" style={{ width: '80%', height: '100vh', overflowX: 'scroll' }}>
