@@ -33,10 +33,11 @@ const Home = () => {
           {doctorsArray.map((doctor) => (
             <DoctorItem
               key={doctor.id}
+              id={doctor.id}
               name={doctor.name}
               specialization={doctor.specialization}
-              time_start={doctor.time_start}
-              time_end={doctor.time_end}
+              timestart={doctor.time_start}
+              timeend={doctor.time_end}
             />
           ))}
         </div>

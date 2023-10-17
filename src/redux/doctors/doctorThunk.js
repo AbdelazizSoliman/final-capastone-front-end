@@ -50,3 +50,12 @@ export const fetchSpecializations = createAsyncThunk('doctors/fetchSpecializatio
     return thunkAPI.rejectWithValue({ error: e.message });
   }
 });
+
+export const fetchDoctorDetails = createAsyncThunk('doctors/fetchDoctorDetails', async (id, thunkAPI) => {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/v1/doctors/${id}`);
+    return response.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue({ error: e.message });
+  }
+});
