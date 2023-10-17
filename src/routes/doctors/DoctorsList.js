@@ -35,8 +35,8 @@ const Home = () => {
               key={doctor.id}
               name={doctor.name}
               specialization={doctor.specialization}
-              timestart={doctor.timestart}
-              timeend={doctor.timeend}
+              time_start={doctor.time_start}
+              time_end={doctor.time_end}
             />
           ))}
         </div>

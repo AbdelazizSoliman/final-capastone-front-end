@@ -15,7 +15,9 @@ const DeleteDoctor = () => {
   }, [dispatch, doctorsArray]);
 
   const handleDelete = (doctorId) => {
+    dispatch(fetchDoctors());
     dispatch(deleteDoctor(doctorId));
+    dispatch(fetchDoctors());
   };
 
   return (
@@ -27,7 +29,7 @@ const DeleteDoctor = () => {
           <ul className="list-group grid gap-3">
             {doctorsArray.map((doctor) => (
               <li key={doctor.id} className="list-group-item d-flex justify-content-between align-items-center delete-item">
-                <ItemToDelete name={doctor.name} specialization={doctor.specialization.name} />
+                <ItemToDelete name={doctor.name} />
                 <button type="button" className="btn btn-danger" onClick={() => handleDelete(doctor.id)}>
                   Delete
                 </button>

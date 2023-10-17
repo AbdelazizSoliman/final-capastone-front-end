@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 
 const HomeItem = ({
-  name, specialization, timestart, timeend,
+  name, specialization, time_start, time_end,
 }) => (
 
   <div className="home_item">
@@ -16,9 +16,9 @@ const HomeItem = ({
     </Link>
     <p>{specialization}</p>
     <p>Start</p>
-    <p>{timestart}</p>
+    <p>{time_start}</p>
     <p>End</p>
-    <p>{timeend}</p>
+    <p>{time_end}</p>
   </div>
 
 );
@@ -26,8 +26,8 @@ const HomeItem = ({
 HomeItem.propTypes = {
   name: PropTypes.string.isRequired,
   specialization: PropTypes.string.isRequired,
-  timestart: PropTypes.string.isRequired,
-  timeend: PropTypes.string.isRequired,
+  time_start: PropTypes.string.isRequired,
+  time_end: PropTypes.string.isRequired,
 };
 
 export default HomeItem;
