@@ -33,7 +33,6 @@ const DoctorDetails = () => {
           <button type="submit" className="btn btn-primary">Reserve</button>
         </div>
       </div>
-
     </div>
   );
 };
