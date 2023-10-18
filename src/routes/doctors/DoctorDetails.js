@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SideNav from '../../components/home/SideNav';
 import { fetchDoctorDetails } from '../../redux/doctors/doctorThunk';
+import { Link } from 'react-router-dom';
 
 const DoctorDetails = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,9 @@ const DoctorDetails = () => {
           <p>{doctor.price}</p>
           <p>{doctor.specialization_name}</p>
           <p>{doctor.phone_number}</p>
-          <button type="submit" className="btn btn-primary">Reserve</button>
+          <Link to={`/doctors/details/${id}/appointments/new`} className="btn btn-primary">
+        Reserve
+      </Link>
         </div>
       </div>
     </div>
