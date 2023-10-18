@@ -23,10 +23,10 @@ const NewAppointmentForm = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (doctors.length === 0) {
+    if (doctors.length === 0 || doctors.length === undefined) {
       dispatch(fetchDoctors());
     }
-     if (patients.length === 0) {
+    if (patients.length === 0 || patients.length === undefined) {
       dispatch(fetchPatients()); // Fetch the list of patients if needed
     }
     const params = new URLSearchParams(location.search);
@@ -44,7 +44,7 @@ const NewAppointmentForm = () => {
       appointmentData.date_of_appointment.length === 0 ||
       appointmentData.time_of_appointment.length === 0 ||
       appointmentData.city.length === 0 ||
-      appointmentData.doctorName.length === 0||
+      appointmentData.doctorName.length === 0 ||
       appointmentData.patientName.length === 0
     ) {
       toast.warn('Please fill in all fields');
@@ -58,14 +58,21 @@ const NewAppointmentForm = () => {
       toast.warn('Selected doctor not found');
       return;
     }
+
+    if (!selectPat) {
+      toast.warn('Selected patient not found');
+      return;
+    }
+
+    // Extract the doctor's ID
+    const doctorId = selectedDoc.id;
     const patientId = selectPat.id;
-    // You can proceed with appointment creation here
 
     try {
       // Dispatch the action to create a new appointment
       // ...
       dispatch(
-        createNewAppointment({ ...appointmentData, patient_id: patientId }),
+        createNewAppointment({ ...appointmentData, doctor_id: doctorId, patient_id: patientId }),
       );
 
       // Reset the form
