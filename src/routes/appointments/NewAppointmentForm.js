@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { createNewAppointment } from '../../redux/appointments/appointmentThunk';
+import { fetchPatients } from '../../redux/patients/patientThunk';
 import { fetchDoctors } from '../../redux/doctors/doctorThunk';
 import SideNav from '../../components/home/SideNav';
 
@@ -15,13 +16,18 @@ const NewAppointmentForm = () => {
     time_of_appointment: '',
     city: '',
     doctorName: '', // Selected doctor's name
+    patientName: '',
   });
   const { doctors } = useSelector((store) => store.doctors);
+  const { patients } = useSelector((store) => store.patients);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (doctors.length === 0) {
       dispatch(fetchDoctors());
+    }
+     if (patients.length === 0) {
+      dispatch(fetchPatients()); // Fetch the list of patients if needed
     }
     const params = new URLSearchParams(location.search);
     const doctorNameParam = params.get('doctorName');
@@ -29,7 +35,7 @@ const NewAppointmentForm = () => {
       // Autofill the doctor's name
       setAppointmentData({ ...appointmentData, doctorName: doctorNameParam });
     }
-  }, [dispatch, location.search, doctors]);
+  }, [dispatch, location.search, doctors, patients]);
 
   const handleCreateAppointment = async (e) => {
     e.preventDefault();
@@ -38,24 +44,29 @@ const NewAppointmentForm = () => {
       appointmentData.date_of_appointment.length === 0 ||
       appointmentData.time_of_appointment.length === 0 ||
       appointmentData.city.length === 0 ||
-      appointmentData.doctorName.length === 0
+      appointmentData.doctorName.length === 0||
+      appointmentData.patientName.length === 0
     ) {
       toast.warn('Please fill in all fields');
       return;
     }
 
     const selectedDoc = doctors.find((doctor) => doctor.name === appointmentData.doctorName);
+    const selectPat = patients.find((patient) => patient.name === appointmentData.patientName);
 
     if (!selectedDoc) {
       toast.warn('Selected doctor not found');
       return;
     }
-
+    const patientId = selectPat.id;
     // You can proceed with appointment creation here
 
     try {
       // Dispatch the action to create a new appointment
       // ...
+      dispatch(
+        createNewAppointment({ ...appointmentData, patient_id: patientId }),
+      );
 
       // Reset the form
       setAppointmentData({
@@ -63,6 +74,7 @@ const NewAppointmentForm = () => {
         time_of_appointment: '',
         city: '',
         doctorName: appointmentData.doctorName, // Preserve the doctor's name
+        patientName: '',
       });
 
       toast.success('Appointment created successfully!', {
@@ -74,6 +86,13 @@ const NewAppointmentForm = () => {
     } catch (err) {
       setError(err.message || 'Error creating appointment. Please try again.');
     }
+  };
+
+  const handleInputChange = (e) => {
+    setAppointmentData({
+      ...appointmentData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -120,6 +139,23 @@ const NewAppointmentForm = () => {
           <div className="form-group">
             <div>Doctor's Name</div>
             <span>{appointmentData.doctorName}</span>
+          </div>
+
+          <div className="form-group">
+            <div>Select a Patient</div>
+            <select
+              className="form-select"
+              name="patientName"
+              value={appointmentData.patientName}
+              onChange={handleInputChange}
+            >
+              <option value="">Select a patient</option>
+              {patients.map((patient) => (
+                <option key={patient.id} value={patient.name}>
+                  {patient.name}
+                </option>
+              ))}
+            </select>
           </div>
           <button
             type="button"
