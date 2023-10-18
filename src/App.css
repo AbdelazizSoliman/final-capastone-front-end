@@ -40,6 +40,7 @@ form {
   flex-direction: column;
   gap: 0.5em;
 }
+
 .home_component {
   display: flex;
   width: 100%;
@@ -57,6 +58,7 @@ form {
   width: 100%;
   height: 100%;
 }
+
 .slideshowSlider {
   white-space: nowrap;
   display: flex;
@@ -77,6 +79,7 @@ form {
     gap: 3px;
     overflow: hidden;
   }
+
   .slideshowSlider {
     white-space: nowrap;
     display: flex;
@@ -87,11 +90,11 @@ form {
 
   .container {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    width: 100%;  
+    width: 100%;
   }
 }
 
@@ -156,6 +159,4 @@ form {
     gap: 1rem;
     width: 100%;
   }
-
-
 }
