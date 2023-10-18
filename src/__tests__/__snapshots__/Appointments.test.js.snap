@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Appointmetns component should render correctly 1`] = `
+<div>
+  <div
+    class="d-flex w-100 align-items-center justify-content-center bg-green"
+  >
+    <div
+      class="d-flex flex-column "
+    >
+      <img
+        alt="getDocLogo"
+        class="img-fluid my-4"
+        src="getdoc.png"
+        style="max-width: 40%;"
+      />
+      <ul
+        class="list-group text-center border-0 mt-1"
+      >
+        <li
+          class="li-cont list-group-item border-0 pl-2 fw-bold d-flex"
+        >
+          <a
+            class="link text-decoration-none align-self-start"
+            href="/"
+          >
+            DOCTORS
+          </a>
+        </li>
+        <li
+          class="list-group-item custom-link border-0 pl-2 fw-bold d-flex"
+        >
+          <a
+            class="text-decoration-none align-self-start"
+            href="/appointments"
+          >
+            MY APPOINTMENTS
+          </a>
+        </li>
+        <li
+          class="list-group-item custom-link border-0 pl-2 fw-bold d-flex"
+        >
+          <a
+            class="text-decoration-none align-self-start"
+            href="/appointments/new"
+          >
+            MAKE APPOINTMENTS
+          </a>
+        </li>
+        <li
+          class="list-group-item custom-link border-0 pl-2 fw-bold d-flex"
+        >
+          <a
+            class="text-decoration-none align-self-start"
+            href="/doctors/new"
+          >
+            ADD DOCTOR
+          </a>
+        </li>
+        <li
+          class="list-group-item custom-link border-0 pl-2 fw-bold d-flex"
+        >
+          <a
+            class="text-decoration-none align-self-start"
+            href="/doctors/delete"
+          >
+            DELETE DOCTOR
+          </a>
+        </li>
+        <li
+          class="list-group-item custom-link border-0 pl-2 fw-bold d-flex"
+        >
+          <a
+            class="text-decoration-none align-self-start"
+            href="/doctors/delete"
+          >
+            LOG OUT
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="home_component"
+    >
+      <button
+        aria-label="Slide left"
+        class="flex"
+        type="button"
+      >
+        <i
+          class="fa fa-chevron-left"
+          style="font-size: 2em; color: rgb(37, 200, 4);"
+        />
+      </button>
+      <div
+        class="slideshowSlider"
+        id="slider"
+      >
+        <ul
+          class="d-flex"
+        />
+      </div>
+      <button
+        aria-label="Slide Right"
+        class="flex"
+        type="button"
+      >
+        <i
+          class="fa fa-chevron-right"
+          style="font-size: 2em; color: rgb(37, 200, 4);"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

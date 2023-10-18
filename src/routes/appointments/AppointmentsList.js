@@ -11,7 +11,7 @@ const AppointmentsList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (appointmentsArr.length === 0) {
+    if (appointmentsArr.length === 0 || appointmentsArr.length === undefined) {
       dispatch(fetchAppointments());
     }
   }, [dispatch, appointmentsArr]);
