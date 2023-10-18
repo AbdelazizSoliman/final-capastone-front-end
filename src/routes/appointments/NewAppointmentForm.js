@@ -51,33 +51,29 @@ const NewAppointmentForm = () => {
       return;
     }
 
-    const doctorId = selectedDoc.id;
+    // You can proceed with appointment creation here
 
     try {
-      dispatch(
-        createNewAppointment({ ...appointmentData, doctor_id: doctorId })
-      );
+      // Dispatch the action to create a new appointment
+      // ...
 
+      // Reset the form
       setAppointmentData({
         date_of_appointment: '',
         time_of_appointment: '',
         city: '',
-        doctorName: '',
+        doctorName: appointmentData.doctorName, // Preserve the doctor's name
       });
 
       toast.success('Appointment created successfully!', {
         position: toast.POSITION.TOP_CENTER,
       });
+
+      // Redirect to the appointment list page or any other page as needed
+      navigate('/appointments');
     } catch (err) {
       setError(err.message || 'Error creating appointment. Please try again.');
     }
-  };
-
-  const handleInputChange = (e) => {
-    setAppointmentData({
-      ...appointmentData,
-      [e.target.name]: e.target.value,
-    });
   };
 
   return (
@@ -94,7 +90,7 @@ const NewAppointmentForm = () => {
               className="form-control"
               name="date_of_appointment"
               value={appointmentData.date_of_appointment}
-              onChange={handleInputChange}
+              onChange={(e) => setAppointmentData({ ...appointmentData, date_of_appointment: e.target.value })}
             />
           </div>
           <div className="form-group">
@@ -104,7 +100,7 @@ const NewAppointmentForm = () => {
               className="form-control"
               name="time_of_appointment"
               value={appointmentData.time_of_appointment}
-              onChange={handleInputChange}
+              onChange={(e) => setAppointmentData({ ...appointmentData, time_of_appointment: e.target.value })}
             />
           </div>
           <div className="form-group">
@@ -113,7 +109,7 @@ const NewAppointmentForm = () => {
               className="form-select"
               name="city"
               value={appointmentData.city}
-              onChange={handleInputChange}
+              onChange={(e) => setAppointmentData({ ...appointmentData, city: e.target.value })}
             >
               <option value="">Select a city</option>
               <option value="Cairo">Cairo</option>
@@ -122,20 +118,8 @@ const NewAppointmentForm = () => {
             </select>
           </div>
           <div className="form-group">
-            <div>Select a Doctor</div>
-            <select
-              className="form-select"
-              name="doctorName"
-              value={appointmentData.doctorName}
-              onChange={handleInputChange}
-            >
-              <option value="">Select a doctor</option>
-              {doctors.map((doctor) => (
-                <option key={doctor.id} value={doctor.name}>
-                  {doctor.name}
-                </option>
-              ))}
-            </select>
+            <div>Doctor's Name</div>
+            <span>{appointmentData.doctorName}</span>
           </div>
           <button
             type="button"
