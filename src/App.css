@@ -40,6 +40,30 @@ form {
   flex-direction: column;
   gap: 0.5em;
 }
+.home_component {
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.slideshowSlider {
+  white-space: nowrap;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  width: 100%;
+}
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
 @media (max-width: 800px) {
@@ -53,4 +77,85 @@ form {
     gap: 3px;
     overflow: hidden;
   }
+  .slideshowSlider {
+    white-space: nowrap;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;  
+  }
+}
+
+/* Media query for screens smaller than 768px (adjust the breakpoint as needed) */
+@media screen and (max-width: 768px) {
+  .home_component {
+    display: flex;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .slideshowSlider {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home_item {
+    min-width: 300px;
+    cursor: pointer;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+}
+
+/* Media query for screens larger than 1200px (adjust the breakpoint as needed) */
+@media screen and (min-width: 1200px) {
+  .home_component {
+    display: flex;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+    gap: 2rem;
+    max-height: 100vh;
+
+    /* Set a maximum height to fit content within the viewport height */
+    overflow-y: auto;
+
+    /* Increase gap between items on larger screens */
+  }
+
+  .home_item {
+    min-width: 300px;
+    cursor: pointer;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+
 }

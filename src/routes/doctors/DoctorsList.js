@@ -25,9 +25,10 @@ const Home = () => {
     }
   }, [dispatch, doctorsArray]);
   return (
-    <div className="d-flex align-items-center justify-content-center bg-green">
+    <div className="container">
       <SideNav />
       <div className="home_component">
+
         <button type="button" className="flex" onClick={slideLeft} aria-label="Slide left"><i className="fa fa-chevron-left" style={{ fontSize: '2em', color: '#25c804' }} /></button>
         <div className="slideshowSlider" id="slider">
           {doctorsArray.map((doctor) => (
