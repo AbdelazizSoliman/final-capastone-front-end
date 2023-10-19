@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { registerPatient } from '../../redux/patients/patientThunk';
 
 function RegisterPage() {
@@ -73,13 +73,18 @@ function RegisterPage() {
             />
           </label>
         </div>
-        <button
-          onClick={handleSubmit}
-          type="submit"
-          className="btn btn-primary"
-        >
-          Register
-        </button>
+        <div className="mb-3">
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="btn btn-primary"
+          >
+            Register
+          </button>
+        </div>
+        <div className="mb-3">
+          <Link to="/">Sign up</Link>
+        </div>
       </form>
     </div>
   );

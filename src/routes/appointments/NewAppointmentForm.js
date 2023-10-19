@@ -35,7 +35,7 @@ const NewAppointmentForm = () => {
       // Autofill the doctor's name
       setAppointmentData({ ...appointmentData, doctorName: doctorNameParam });
     }
-  }, [dispatch, location.search, doctors, patients, appointmentData]);
+  }, [dispatch, location.search, doctors, patients]);
 
   const handleCreateAppointment = async (e) => {
     e.preventDefault();

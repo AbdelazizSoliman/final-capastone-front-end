@@ -5,12 +5,21 @@ const url = 'http://localhost:3000/api/v1/patients';
 
 export const loginPatient = createAsyncThunk(
   'patients/loginPatient',
-  async (thunkAPI) => {
+  async (userInfo) => {
     try {
-      const response = await axios.post(`${url}/login/`);
-      return response.data;
+      const response = await axios.post(`${url}/login`, userInfo, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.status === 200) {
+        const token = response.headers.authorization.split('Bearer ')[1];
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', userInfo.username);
+      }
     } catch (e) {
-      return thunkAPI.rejectWithValue({ error: e.message });
+      throw new Error(e.response?.data?.error || 'Failed to add doctor');
     }
   },
 );

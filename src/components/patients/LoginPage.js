@@ -55,27 +55,17 @@ function LoginPage() {
           </label>
         </div>
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password:
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={userInfo.password}
-              onChange={handleChange}
-            />
-          </label>
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="btn btn-primary"
+          >
+            Login
+          </button>
         </div>
-
-        <button
-          onClick={handleSubmit}
-          type="submit"
-          className="btn btn-primary"
-        >
-          Login
-        </button>
-        <Link to="/register">Sign up</Link>
+        <div className="mb-3">
+          <Link to="/register">Sign up</Link>
+        </div>
       </form>
     </div>
   );
