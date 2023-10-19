@@ -25,8 +25,7 @@ export const fetchPatients = createAsyncThunk('patients/fetchPatients', async (t
 });
 
 export const registerPatient = createAsyncThunk(
-  'patients/import { loginPatient } from '../../redux/patients/patientThunk';
-',
+  'patients/registerPatient',
   async (userInfo) => {
     try {
       const response = await axios.post(`${url}`, userInfo, {

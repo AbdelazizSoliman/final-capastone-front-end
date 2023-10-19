@@ -30,29 +30,44 @@ function LoginPage() {
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
             Username:
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              name="username"
+              value={userInfo.username}
+              onChange={handleChange}
+            />
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="username"
-            name="username"
-            value={userInfo.username}
-            onChange={handleChange}
-          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Password:
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              value={userInfo.password}
+              onChange={handleChange}
+            />
+          </label>
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
             Password:
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              value={userInfo.password}
+              onChange={handleChange}
+            />
           </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            value={userInfo.password}
-            onChange={handleChange}
-          />
         </div>
+
         <button
           onClick={handleSubmit}
           type="submit"

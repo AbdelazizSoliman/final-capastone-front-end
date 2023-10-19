@@ -37,41 +37,41 @@ function RegisterPage() {
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
             Username:
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              name="username"
+              value={userInfo.username}
+              onChange={handleChange}
+            />
           </label>
-          <input
-            type="text"
-            className="form-control"
-            id="username"
-            name="username"
-            value={userInfo.username}
-            onChange={handleChange}
-          />
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
             Email:
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              id="email"
+              value={userInfo.email}
+              onChange={handleChange}
+            />
           </label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            id="email"
-            value={userInfo.email}
-            onChange={handleChange}
-          />
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
             Password:
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              id="password"
+              value={userInfo.password}
+              onChange={handleChange}
+            />
           </label>
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            id="password"
-            value={userInfo.password}
-            onChange={handleChange}
-          />
         </div>
         <button
           onClick={handleSubmit}
