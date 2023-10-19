@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginPatient } from '../../redux/patients/patientThunk';
+import { useNavigate } from 'react-router-dom';
+import { registerPatient } from '../../redux/patients/patientThunk';
 
-function LoginPage() {
+function RegisterPage() {
   const [userInfo, setUserInfo] = useState({
     username: '',
     password: '',
+    email: '',
   });
 
   const dispatch = useDispatch();
@@ -19,13 +20,19 @@ function LoginPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(loginPatient(userInfo));
-    navigate('/home');
+    dispatch(registerPatient(userInfo));
+    setUserInfo({
+      username: '',
+      password: '',
+      email: '',
+    });
+
+    navigate('/');
   };
 
   return (
     <div className="container">
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
@@ -40,16 +47,15 @@ function LoginPage() {
             />
           </label>
         </div>
-
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password:
+          <label htmlFor="email" className="form-label">
+            Email:
             <input
-              type="password"
+              type="email"
+              name="email"
               className="form-control"
-              id="password"
-              name="password"
-              value={userInfo.password}
+              id="email"
+              value={userInfo.email}
               onChange={handleChange}
             />
           </label>
@@ -59,25 +65,24 @@ function LoginPage() {
             Password:
             <input
               type="password"
+              name="password"
               className="form-control"
               id="password"
-              name="password"
               value={userInfo.password}
               onChange={handleChange}
             />
           </label>
         </div>
-
         <button
           onClick={handleSubmit}
           type="submit"
           className="btn btn-primary"
         >
-          Login
+          Register
         </button>
       </form>
     </div>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
