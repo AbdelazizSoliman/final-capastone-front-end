@@ -35,7 +35,7 @@ const NewAppointmentForm = () => {
       // Autofill the doctor's name
       setAppointmentData({ ...appointmentData, doctorName: doctorNameParam });
     }
-  }, [dispatch, location.search, doctors, patients]);
+  }, [dispatch, location.search, doctors, patients, appointmentData]);
 
   const handleCreateAppointment = async (e) => {
     e.preventDefault();
@@ -116,7 +116,9 @@ const NewAppointmentForm = () => {
               className="form-control"
               name="date_of_appointment"
               value={appointmentData.date_of_appointment}
-              onChange={(e) => setAppointmentData({ ...appointmentData, date_of_appointment: e.target.value })}
+              onChange={(e) => setAppointmentData({
+                ...appointmentData, date_of_appointment: e.target.value,
+              })}
             />
           </div>
           <div className="form-group">
@@ -126,7 +128,9 @@ const NewAppointmentForm = () => {
               className="form-control"
               name="time_of_appointment"
               value={appointmentData.time_of_appointment}
-              onChange={(e) => setAppointmentData({ ...appointmentData, time_of_appointment: e.target.value })}
+              onChange={(e) => setAppointmentData({
+                ...appointmentData, time_of_appointment: e.target.value,
+              })}
             />
           </div>
           <div className="form-group">
@@ -140,11 +144,10 @@ const NewAppointmentForm = () => {
               <option value="">Select a city</option>
               <option value="Cairo">Cairo</option>
               <option value="Marrakech">Marrakech</option>
-              {/* Add more cities as needed */}
             </select>
           </div>
           <div className="form-group">
-            <div>Doctor's Name</div>
+            <div>Doctor&#39;s Name</div>
             <span>{appointmentData.doctorName}</span>
           </div>
 
