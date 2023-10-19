@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const url = 'http://localhost:3000/api/v1/doctors';
 
-export const fetchDoctors = createAsyncThunk('doctors/fetchDoctors', async (thunkAPI) => {
+export const fetchDoctors = createAsyncThunk('doctors/fetchDoctors', async (_, thunkAPI) => {
   try {
     const response = await axios.get(url);
     return response.data;

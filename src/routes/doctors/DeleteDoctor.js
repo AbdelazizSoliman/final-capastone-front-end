@@ -9,7 +9,7 @@ const DeleteDoctor = () => {
   const doctorsArray = useSelector((state) => state.doctors.doctors);
 
   useEffect(() => {
-    if (doctorsArray.length === 0) {
+    if (doctorsArray.length === 0 || doctorsArray.length === undefined) {
       dispatch(fetchDoctors());
     }
   }, [dispatch, doctorsArray]);
