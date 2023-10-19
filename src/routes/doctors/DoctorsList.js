@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDoctors } from "../../redux/doctors/doctorThunk";
-import SideNav from "../../components/home/SideNav";
-import DoctorItem from "../../components/home/doctorItem";
-import "./doctor.css";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDoctors } from '../../redux/doctors/doctorThunk';
+import SideNav from '../../components/home/SideNav';
+import DoctorItem from '../../components/home/doctorItem';
+import './doctor.css';
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const slideLeft = () => {
-    const slider = document.getElementById("slider");
+    const slider = document.getElementById('slider');
     slider.scrollLeft -= 500;
   };
 
   const slideRight = () => {
-    const slider = document.getElementById("slider");
+    const slider = document.getElementById('slider');
     slider.scrollLeft += 500;
   };
   const doctorsArray = useSelector((state) => state.doctors.doctors);
@@ -36,7 +36,7 @@ const Home = () => {
         >
           <i
             className="fa fa-chevron-left"
-            style={{ fontSize: "2em", color: "#25c804" }}
+            style={{ fontSize: '2em', color: '#25c804' }}
           />
         </button>
         <div className="slideshowSlider" id="slider">
@@ -59,7 +59,7 @@ const Home = () => {
         >
           <i
             className="fa fa-chevron-right"
-            style={{ fontSize: "2em", color: "#25c804" }}
+            style={{ fontSize: '2em', color: '#25c804' }}
           />
         </button>
       </div>

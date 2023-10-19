@@ -3,7 +3,7 @@ import { fetchPatients, registerPatient } from './patientThunk';
 
 const initialState = {
   patients: [],
-  token:'',
+  token: '',
   isLoading: true,
   error: false,
   errMsg: '',

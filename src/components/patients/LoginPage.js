@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { loginPatient } from "../../redux/patients/patientThunk";
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginPatient } from '../../redux/patients/patientThunk';
 
 function LoginPage() {
   const [userInfo, setUserInfo] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
 
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ function LoginPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(loginPatient(userInfo));
-     navigate("/home");
+    navigate('/home');
   };
 
   return (

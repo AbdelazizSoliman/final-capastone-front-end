@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { fetchPatients } from "../../redux/patients/patientThunk";
-import { useDispatch } from "react-redux";
-import { registerPatient } from "../../redux/patients/patientThunk";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { registerPatient } from '../../redux/patients/patientThunk';
+
 function RegisterPage() {
   const [userInfo, setUserInfo] = useState({
-    username: "",
-    password: "",
-    email: "",
+    username: '',
+    password: '',
+    email: '',
   });
 
   const dispatch = useDispatch();
@@ -22,12 +22,12 @@ function RegisterPage() {
     event.preventDefault();
     dispatch(registerPatient(userInfo));
     setUserInfo({
-      username: "",
-      password: "",
-      email: "",
+      username: '',
+      password: '',
+      email: '',
     });
 
-    navigate("/");
+    navigate('/');
   };
 
   return (
