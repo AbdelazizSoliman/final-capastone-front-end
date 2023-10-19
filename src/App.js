@@ -8,13 +8,15 @@ import NewAppointment from './routes/appointments/NewAppointment';
 import NewAppointmentForm from './routes/appointments/NewAppointmentForm';
 import LoginPage from './components/patients/LoginPage';
 import './App.css';
+import RegisterPage from './components/patients/register';
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/appointments" element={<AppointmentsList />} />
         <Route path="/appointments/new" element={<NewAppointment />} />
         <Route path="/doctors/details/:id/appointments/new" element={<NewAppointmentForm />} />

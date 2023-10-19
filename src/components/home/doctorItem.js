@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 
 const DoctorItem = ({
-  id, name, specialization, timestart, timeend,
+  itemid, name, specialization, timestart, timeend,
 }) => (
 
   <div className="home_item">
-    <Link to={`/doctors/details/${id}`}>
+    <Link to={`/doctors/details/1${itemid}`}>
       <img src="https://picsum.photos/1000/1000" alt="Error" width="80%" />
       <h5>
         {name}
@@ -24,7 +24,7 @@ const DoctorItem = ({
 );
 
 DoctorItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  itemid: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   specialization: PropTypes.string.isRequired,
   timestart: PropTypes.string.isRequired,

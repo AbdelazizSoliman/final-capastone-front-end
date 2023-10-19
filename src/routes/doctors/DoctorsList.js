@@ -28,12 +28,22 @@ const Home = () => {
     <div className="d-flex align-items-center justify-content-center bg-green">
       <SideNav />
       <div className="home_component">
-        <button type="button" className="flex" onClick={slideLeft} aria-label="Slide left"><i className="fa fa-chevron-left" style={{ fontSize: '2em', color: '#25c804' }} /></button>
+        <button
+          type="button"
+          className="flex"
+          onClick={slideLeft}
+          aria-label="Slide left"
+        >
+          <i
+            className="fa fa-chevron-left"
+            style={{ fontSize: '2em', color: '#25c804' }}
+          />
+        </button>
         <div className="slideshowSlider" id="slider">
           {doctorsArray.map((doctor) => (
             <DoctorItem
               key={doctor.id}
-              id={doctor.id}
+              itemid={doctor.id}
               name={doctor.name}
               specialization={doctor.specialization}
               timestart={doctor.time_start}
@@ -41,7 +51,17 @@ const Home = () => {
             />
           ))}
         </div>
-        <button type="button" className="flex" onClick={slideRight} aria-label="Slide right"><i className="fa fa-chevron-right" style={{ fontSize: '2em', color: '#25c804' }} /></button>
+        <button
+          type="button"
+          className="flex"
+          onClick={slideRight}
+          aria-label="Slide right"
+        >
+          <i
+            className="fa fa-chevron-right"
+            style={{ fontSize: '2em', color: '#25c804' }}
+          />
+        </button>
       </div>
     </div>
   );
