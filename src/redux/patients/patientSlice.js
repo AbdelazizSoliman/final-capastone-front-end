@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPatients } from './patientThunk';
+import { fetchPatients, registerPatient } from './patientThunk';
 
 const initialState = {
   patients: [],
+  token:'',
   isLoading: true,
   error: false,
   errMsg: '',
@@ -17,7 +18,14 @@ const patientsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchPatients.fulfilled, (state, action) => {
-        state.patients = action.payload;
+        state.token = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(registerPatient.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(registerPatient.fulfilled, (state, action) => {
+        state.token = action.payload;
         state.isLoading = false;
       })
       .addCase(fetchPatients.rejected, (state, action) => {
