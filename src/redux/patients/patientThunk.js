@@ -7,17 +7,18 @@ export const loginPatient = createAsyncThunk(
   'patients/loginPatient',
   async (userInfo) => {
     try {
-      const response = await axios.post(`${url}/login`, userInfo, {
+      await axios.post(`${url}/login`, userInfo, {
         headers: {
           'Content-Type': 'application/json',
         },
+      }).then(({ data, status }) => {
+        if (status === 200) {
+          const { token } = data;
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', userInfo.username);
+        }
+        throw new Error('Failed to login');
       });
-
-      if (response.status === 200) {
-        const token = response.headers.authorization.split('Bearer ')[1];
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', userInfo.username);
-      }
     } catch (e) {
       throw new Error(e.response?.data?.error || 'Failed to add doctor');
     }

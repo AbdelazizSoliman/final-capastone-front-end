@@ -14,8 +14,8 @@ const NewAppointment = () => {
     date_of_appointment: '', // Updated field name
     time_of_appointment: '', // Updated field name
     city: '',
-    doctorName: '', // Selected doctor's name
-    patientName: '', // Selected patient's name
+    doctor_id: '', // Selected doctor's name
+    patient_id: '', // Selected patient's name
   });
   const { doctors } = useSelector((store) => store.doctors);
   const { patients } = useSelector((store) => store.patients);
@@ -37,35 +37,30 @@ const NewAppointment = () => {
       appointmentData.date_of_appointment.length === 0 // Updated field name
       || appointmentData.time_of_appointment.length === 0 // Updated field name
       || appointmentData.city.length === 0
-      || appointmentData.doctorName.length === 0
-      || appointmentData.patientName.length === 0
+      || appointmentData.doctor_id.length === 0
+      || appointmentData.patient_id.length === 0
     ) {
       toast.warn('Please fill in all fields');
-      return;
     }
 
-    // Find the doctor object by name
-    const selecedDoc = doctors.find((doctor) => doctor.name === appointmentData.doctorName);
-    const selectPat = patients.find((patient) => patient.name === appointmentData.patientName);
-
-    if (!selecedDoc) {
+    if (!appointmentData.patient_id) {
       toast.warn('Selected doctor not found');
       return;
     }
 
-    if (!selectPat) {
+    if (!appointmentData.patient_id) {
       toast.warn('Selected patient not found');
       return;
     }
 
-    // Extract the doctor's ID
-    const doctorId = selecedDoc.id;
-    const patientId = selectPat.id;
-
     try {
       // Dispatch the action to create a new appointment
       dispatch(
-        createNewAppointment({ ...appointmentData, doctor_id: doctorId, patient_id: patientId }),
+        createNewAppointment({
+          ...appointmentData,
+          doctor_id: appointmentData.doctor_id,
+          patient_id: appointmentData.patient_id,
+        }),
       );
 
       // Reset the form
@@ -73,8 +68,8 @@ const NewAppointment = () => {
         date_of_appointment: '', // Updated field name
         time_of_appointment: '', // Updated field name
         city: '',
-        doctorName: '',
-        patientName: '',
+        doctor_id: '',
+        patient_id: '',
       });
 
       toast.success('Appointment created successfully!', {
@@ -140,13 +135,13 @@ const NewAppointment = () => {
             <div>Select a Doctor</div>
             <select
               className="form-select"
-              name="doctorName"
-              value={appointmentData.doctorName}
+              name="doctor_id"
+              value={appointmentData.doctor_id}
               onChange={handleInputChange}
             >
               <option value="">Select a doctor</option>
               {doctors.map((doctor) => (
-                <option key={doctor.id} value={doctor.name}>
+                <option key={doctor.id} value={doctor.id}>
                   {doctor.name}
                 </option>
               ))}
@@ -157,20 +152,20 @@ const NewAppointment = () => {
             <div>Select a Patient</div>
             <select
               className="form-select"
-              name="patientName"
-              value={appointmentData.patientName}
+              name="patient_id"
+              value={appointmentData.patient_id}
               onChange={handleInputChange}
             >
               <option value="">Select a patient</option>
               {patients.map((patient) => (
-                <option key={patient.id} value={patient.name}>
-                  {patient.name}
+                <option key={patient.id} value={patient.id}>
+                  {patient.username}
                 </option>
               ))}
             </select>
           </div>
           <button
-            type="button"
+            type="submit"
             className="btn btn-primary"
             onClick={handleCreateAppointment}
           >

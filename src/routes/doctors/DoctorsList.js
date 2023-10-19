@@ -45,7 +45,7 @@ const Home = () => {
               key={doctor.id}
               itemid={doctor.id}
               name={doctor.name}
-              specialization={doctor.specialization}
+              specialization={doctor.specialization_name}
               timestart={doctor.time_start}
               timeend={doctor.time_end}
             />
