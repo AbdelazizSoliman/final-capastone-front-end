@@ -41,11 +41,11 @@ const NewAppointmentForm = () => {
     e.preventDefault();
 
     if (
-      appointmentData.date_of_appointment.length === 0 ||
-      appointmentData.time_of_appointment.length === 0 ||
-      appointmentData.city.length === 0 ||
-      appointmentData.doctorName.length === 0 ||
-      appointmentData.patientName.length === 0
+      appointmentData.date_of_appointment.length === 0
+      || appointmentData.time_of_appointment.length === 0
+      || appointmentData.city.length === 0
+      || appointmentData.doctorName.length === 0
+      || appointmentData.patientName.length === 0
     ) {
       toast.warn('Please fill in all fields');
       return;
