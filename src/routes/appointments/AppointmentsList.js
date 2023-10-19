@@ -11,7 +11,7 @@ const AppointmentsList = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    if (appointmentsArr.length === 0 || appointmentsArr.length === undefined) {
+    if (appointmentsArr.length === 0) {
       dispatch(fetchAppointments());
     }
   }, [dispatch, appointmentsArr]);
@@ -23,7 +23,7 @@ const AppointmentsList = () => {
         setDisplayedAppointments(response.data.slice(0, 3));
       })
       .catch((error) => {
-        throw new Error(error.response?.data?.error || 'Failed to fetch appointments');
+        console.error('Error fetching data:', error);
       });
   }, []);
 

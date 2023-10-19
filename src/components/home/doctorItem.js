@@ -8,7 +8,7 @@ const DoctorItem = ({
 }) => (
 
   <div className="home_item">
-    <Link to={`/doctors/details/1${itemid}`}>
+    <Link to={`/doctors/details/${itemid}`}>
       <img src="https://picsum.photos/1000/1000" alt="Error" width="80%" />
       <h5>
         {name}
