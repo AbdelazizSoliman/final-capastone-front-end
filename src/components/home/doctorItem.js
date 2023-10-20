@@ -17,18 +17,25 @@ const DoctorItem = ({
           src="https://picsum.photos/200/200" // Adjust image source and dimensions
           alt="Doctor"
           className="rounded border-2"
-          style={{width: '15.5rem'}}
+          style={{ width: '15.5rem' }}
         />
       </Link>
-      <h5 className='text-secondary'>{name}</h5>
-      <p className='text-success fw-bold'>Start Time: {startTime}</p>
-      <p className='text-danger fw-bold'>End Time: {endTime}</p>
+      <h5 className="text-secondary">{name}</h5>
+      <p className="text-success fw-bold">
+        Start Time:
+        {startTime}
+      </p>
+      <p className="text-danger fw-bold">
+        End Time:
+        {endTime}
+      </p>
     </div>
   );
 };
 
 DoctorItem.propTypes = {
   itemid: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
   timestart: PropTypes.string.isRequired,
   timeend: PropTypes.string.isRequired,
 };

@@ -30,9 +30,9 @@ const Home = () => {
     <div className="d-flex" style={{ width: '100vw' }}>
       <SideNav />
       <div className="d-flex flex-column align-items-center mt-5" style={{ width: '80vw' }}>
-        <div className='d-flex flex-column align-items-center'>
-          <h1 className='fw-bold'>Doctors list</h1>
-          <p className='text-secondary'>Please select a doctor</p>
+        <div className="d-flex flex-column align-items-center">
+          <h1 className="fw-bold">Doctors list</h1>
+          <p className="text-secondary">Please select a doctor</p>
         </div>
         <div className="slideshow d-flex align-items-center" style={{ width: '100%' }}>
           <button

@@ -27,7 +27,7 @@ function LoginPage() {
     <div className="container d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
       <div className="w-50 border p-4 d-flex flex-column align-items-center justify-content-center gap-4">
         <h1>Login</h1>
-        <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center justify-content-center'>
+        <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center justify-content-center">
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
               <input
@@ -37,7 +37,7 @@ function LoginPage() {
                 name="username"
                 value={userInfo.username}
                 onChange={handleChange}
-                placeholder='Username'
+                placeholder="Username"
               />
             </label>
           </div>
@@ -51,17 +51,17 @@ function LoginPage() {
                 name="password"
                 value={userInfo.password}
                 onChange={handleChange}
-                placeholder='Password'
+                placeholder="Password"
               />
             </label>
           </div>
-          <div className="mb-3" style={{width: '100%'}}>
-            <button type="submit" className="btn btn-success" style={{width: '100%'}}>
+          <div className="mb-3" style={{ width: '100%' }}>
+            <button type="submit" className="btn btn-success" style={{ width: '100%' }}>
               Login
             </button>
           </div>
-          <div className="mb-3" style={{width: '100%'}}>
-            <Link to="/register" className="btn btn-primary" style={{width: '100%'}}>Sign up</Link>
+          <div className="mb-3" style={{ width: '100%' }}>
+            <Link to="/register" className="btn btn-primary" style={{ width: '100%' }}>Sign up</Link>
           </div>
         </form>
       </div>

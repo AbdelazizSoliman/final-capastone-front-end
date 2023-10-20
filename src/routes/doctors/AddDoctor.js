@@ -72,7 +72,7 @@ const AddDoctor = () => {
       <SideNav />
       <div className="d-flex flex-column align-items-center pt-5" style={{ width: '80vw' }}>
         <form className="p-4">
-          <h2 className='mb-3'>Create a New Doctor</h2>
+          <h2 className="mb-3">Create a New Doctor</h2>
           {error && <p className="text-danger">{error}</p>}
           <div className="mb-3">
             <input
@@ -81,7 +81,7 @@ const AddDoctor = () => {
               name="name"
               value={doctorInfo.name}
               onChange={handleChange}
-              placeholder='Name'
+              placeholder="Name"
             />
           </div>
           <div className="mb-3">
@@ -92,7 +92,7 @@ const AddDoctor = () => {
               value={doctorInfo.time_start}
               onChange={handleChange}
               required
-              placeholder='Available from'
+              placeholder="Available from"
             />
           </div>
           <div className="mb-3">
@@ -103,7 +103,7 @@ const AddDoctor = () => {
               value={doctorInfo.time_end}
               onChange={handleChange}
               required
-              placeholder='Available end'
+              placeholder="Available end"
             />
           </div>
           <div className="mb-3">
@@ -128,18 +128,18 @@ const AddDoctor = () => {
               name="phone_number"
               value={doctorInfo.phone_number}
               onChange={handleChange}
-              placeholder='Phone Number'
+              placeholder="Phone Number"
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Image URL</label>
             <input
               type="text"
               className="form-control"
               name="picture"
               value={doctorInfo.picture}
               onChange={handleChange}
-              placeholder='Online url'
+              placeholder="Image URL"
+              id="picture"
             />
           </div>
           <div className="mb-3">
@@ -149,14 +149,14 @@ const AddDoctor = () => {
               name="price"
               value={doctorInfo.price}
               onChange={handleChange}
-              placeholder='Price'
+              placeholder="Price"
             />
           </div>
           <button
             type="button"
             className="btn btn-primary"
             onClick={handleAddDoctor}
-            style={{width: '100%'}}
+            style={{ width: '100%' }}
           >
             Add Doctor
           </button>

@@ -40,11 +40,11 @@ const NewAppointmentForm = () => {
     e.preventDefault();
 
     if (
-      appointmentData.date_of_appointment.length === 0 ||
-      appointmentData.time_of_appointment.length === 0 ||
-      appointmentData.city.length === 0 ||
-      appointmentData.doctorName.length === 0 ||
-      appointmentData.patientName.length === 0
+      appointmentData.date_of_appointment.length === 0
+      || appointmentData.time_of_appointment.length === 0
+      || appointmentData.city.length === 0
+      || appointmentData.doctorName.length === 0
+      || appointmentData.patientName.length === 0
     ) {
       toast.warn('Please fill in all fields');
       return;
@@ -72,7 +72,7 @@ const NewAppointmentForm = () => {
           ...appointmentData,
           doctor_id: doctorId,
           patient_id: patientId,
-        })
+        }),
       );
 
       setAppointmentData({
@@ -108,23 +108,25 @@ const NewAppointmentForm = () => {
           <h2 className="mb-4">Create New Appointment</h2>
           {error && <p className="text-danger">{error}</p>}
           <div className="mb-3">
-            <label className="form-label">Date of Appointment</label>
+            <p className="form-label">Date of Appointment</p>
             <input
               type="date"
               className="form-control"
               name="date_of_appointment"
               value={appointmentData.date_of_appointment}
               onChange={handleInputChange}
+              id="date"
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">Time of Appointment</label>
+            <p className="form-label">Time of Appointment</p>
             <input
               type="time"
               className="form-control"
               name="time_of_appointment"
               value={appointmentData.time_of_appointment}
               onChange={handleInputChange}
+              id="time"
             />
           </div>
           <div className="mb-3">
@@ -137,12 +139,11 @@ const NewAppointmentForm = () => {
               <option value="">Select a city</option>
               <option value="Cairo">Cairo</option>
               <option value="Marrakech">Marrakech</option>
-              {/* Add more cities as needed */}
             </select>
           </div>
           <div className="mb-3">
-            <label className="form-label">Doctor's Name</label>
-            <span>{appointmentData.doctorName}</span>
+            <p className="form-label">Doctor Name</p>
+            <span id="name">{appointmentData.doctorName}</span>
           </div>
           <div className="mb-3">
             <select
@@ -163,7 +164,7 @@ const NewAppointmentForm = () => {
             type="button"
             className="btn btn-primary"
             onClick={handleCreateAppointment}
-            style={{width: '100%'}}
+            style={{ width: '100%' }}
           >
             Create Appointment
           </button>

@@ -34,7 +34,7 @@ function RegisterPage() {
     <div className="container d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
       <div className="w-50 border p-4 d-flex flex-column align-items-center justify-content-center gap-4">
         <h1>Register</h1>
-        <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center justify-content-center'>
+        <form onSubmit={handleSubmit} className="d-flex flex-column align-items-center justify-content-center">
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
               <input
@@ -44,7 +44,7 @@ function RegisterPage() {
                 name="username"
                 value={userInfo.username}
                 onChange={handleChange}
-                placeholder='Username'
+                placeholder="Username"
               />
             </label>
           </div>
@@ -57,7 +57,7 @@ function RegisterPage() {
                 id="email"
                 value={userInfo.email}
                 onChange={handleChange}
-                placeholder='Email'
+                placeholder="Email"
               />
             </label>
           </div>
@@ -70,7 +70,7 @@ function RegisterPage() {
                 id="password"
                 value={userInfo.password}
                 onChange={handleChange}
-                placeholder='Password'
+                placeholder="Password"
               />
             </label>
           </div>

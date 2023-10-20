@@ -39,9 +39,9 @@ const AppointmentsList = () => {
     <div className="d-flex" style={{ width: '100vw' }}>
       <SideNav />
       <div className="d-flex flex-column align-items-center gap-4 mt-5" style={{ width: '80vw' }}>
-        <div className='d-flex flex-column align-items-center'>
-          <h1 className='fw-bold'>Appointments List</h1>
-          <p className='text-secondary'>Here are your appointments</p>
+        <div className="d-flex flex-column align-items-center">
+          <h1 className="fw-bold">Appointments List</h1>
+          <p className="text-secondary">Here are your appointments</p>
         </div>
         <div className="slideshow d-flex align-items-center" style={{ width: '100%' }}>
           <button
@@ -55,7 +55,7 @@ const AppointmentsList = () => {
           </button>
           <div className="slideshowSlider d-flex gap-2" id="slider" style={{ width: '80%' }}>
             {displayedAppointments.map((appointment) => (
-              <div className="card m-2 p-3 d-flex flex-column gap-4" style={{ width: '300px' }}>
+              <div key={appointment.id} className="card m-2 p-3 d-flex flex-column gap-4" style={{ width: '300px' }}>
                 <h5 className="card-title text-info">Appointment Details</h5>
                 <p className="card-text">
                   <strong className="text-warning">Date:</strong>
