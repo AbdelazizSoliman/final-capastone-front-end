@@ -1,17 +1,25 @@
 li:hover {
-  background-color: #00796b;
+  background-color: #6dae81;
   cursor: pointer;
 }
 
 li a {
-  color: #009688;
+  color: #00796b;
 }
 
 li:hover a {
   color: white;
 }
 
-.btn-outline-success {
+.logout {
+  margin-top: 25vh;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .btn-outline-success {
   margin-top: 10rem;
 }
 
@@ -39,18 +47,16 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-}
+} */
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .App {
     flex-direction: column;
     height: 100vh;
-
-    /* This sets the element's height to 100% of the viewport height */
     text-align: center;
     display: flex;
     gap: 3px;
     overflow: hidden;
   }
-}
+} */
