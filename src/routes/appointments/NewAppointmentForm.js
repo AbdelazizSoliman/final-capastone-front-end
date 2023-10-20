@@ -27,12 +27,11 @@ const NewAppointmentForm = () => {
       dispatch(fetchDoctors());
     }
     if (patients.length === 0 || patients.length === undefined) {
-      dispatch(fetchPatients()); // Fetch the list of patients if needed
+      dispatch(fetchPatients());
     }
     const params = new URLSearchParams(location.search);
     const doctorNameParam = params.get('doctorName');
     if (doctorNameParam) {
-      // Autofill the doctor's name
       setAppointmentData({ ...appointmentData, doctorName: doctorNameParam });
     }
   }, [dispatch, location.search, doctors, patients]);
@@ -41,11 +40,11 @@ const NewAppointmentForm = () => {
     e.preventDefault();
 
     if (
-      appointmentData.date_of_appointment.length === 0
-      || appointmentData.time_of_appointment.length === 0
-      || appointmentData.city.length === 0
-      || appointmentData.doctorName.length === 0
-      || appointmentData.patientName.length === 0
+      appointmentData.date_of_appointment.length === 0 ||
+      appointmentData.time_of_appointment.length === 0 ||
+      appointmentData.city.length === 0 ||
+      appointmentData.doctorName.length === 0 ||
+      appointmentData.patientName.length === 0
     ) {
       toast.warn('Please fill in all fields');
       return;
@@ -64,23 +63,23 @@ const NewAppointmentForm = () => {
       return;
     }
 
-    // Extract the doctor's ID
     const doctorId = selectedDoc.id;
     const patientId = selectPat.id;
 
     try {
-      // Dispatch the action to create a new appointment
-      // ...
       dispatch(
-        createNewAppointment({ ...appointmentData, doctor_id: doctorId, patient_id: patientId }),
+        createNewAppointment({
+          ...appointmentData,
+          doctor_id: doctorId,
+          patient_id: patientId,
+        })
       );
 
-      // Reset the form
       setAppointmentData({
         date_of_appointment: '',
         time_of_appointment: '',
         city: '',
-        doctorName: appointmentData.doctorName, // Preserve the doctor's name
+        doctorName: appointmentData.doctorName,
         patientName: '',
       });
 
@@ -88,7 +87,6 @@ const NewAppointmentForm = () => {
         position: toast.POSITION.TOP_CENTER,
       });
 
-      // Redirect to the appointment list page or any other page as needed
       navigate('/appointments');
     } catch (err) {
       setError(err.message || 'Error creating appointment. Please try again.');
@@ -103,56 +101,50 @@ const NewAppointmentForm = () => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center bg-green">
+    <div className="d-flex align-items-center justify-content-center bg-light" style={{ minHeight: '100vh' }}>
       <SideNav />
-      <div className="home_component">
-        <form>
-          <h2>Create New Appointment</h2>
-          {error && <p>{error}</p>}
-          <div className="form-group">
-            <div>Date of Appointment</div>
+      <div className="d-flex flex-column align-items-center" style={{ width: '80vw' }}>
+        <form className="p-4">
+          <h2 className="mb-4">Create New Appointment</h2>
+          {error && <p className="text-danger">{error}</p>}
+          <div className="mb-3">
+            <label className="form-label">Date of Appointment</label>
             <input
               type="date"
               className="form-control"
               name="date_of_appointment"
               value={appointmentData.date_of_appointment}
-              onChange={(e) => setAppointmentData({
-                ...appointmentData, date_of_appointment: e.target.value,
-              })}
+              onChange={handleInputChange}
             />
           </div>
-          <div className="form-group">
-            <div>Time of Appointment</div>
+          <div className="mb-3">
+            <label className="form-label">Time of Appointment</label>
             <input
               type="time"
               className="form-control"
               name="time_of_appointment"
               value={appointmentData.time_of_appointment}
-              onChange={(e) => setAppointmentData({
-                ...appointmentData, time_of_appointment: e.target.value,
-              })}
+              onChange={handleInputChange}
             />
           </div>
-          <div className="form-group">
-            <div>Select a City</div>
+          <div className="mb-3">
             <select
               className="form-select"
               name="city"
               value={appointmentData.city}
-              onChange={(e) => setAppointmentData({ ...appointmentData, city: e.target.value })}
+              onChange={handleInputChange}
             >
               <option value="">Select a city</option>
               <option value="Cairo">Cairo</option>
               <option value="Marrakech">Marrakech</option>
+              {/* Add more cities as needed */}
             </select>
           </div>
-          <div className="form-group">
-            <div>Doctor&#39;s Name</div>
+          <div className="mb-3">
+            <label className="form-label">Doctor's Name</label>
             <span>{appointmentData.doctorName}</span>
           </div>
-
-          <div className="form-group">
-            <div>Select a Patient</div>
+          <div className="mb-3">
             <select
               className="form-select"
               name="patientName"
@@ -171,6 +163,7 @@ const NewAppointmentForm = () => {
             type="button"
             className="btn btn-primary"
             onClick={handleCreateAppointment}
+            style={{width: '100%'}}
           >
             Create Appointment
           </button>

@@ -21,10 +21,10 @@ const DeleteDoctor = () => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center bg-green">
+    <div className="d-flex align-items-center justify-content-center">
       <SideNav />
 
-      <div className="p-5" style={{ width: '80%', height: '100vh', overflowX: 'scroll' }}>
+      <div className="p-5" style={{ width: '80vw', height: '100vh', overflowX: 'scroll' }}>
         {doctorsArray.length > 0 ? (
           <ul className="list-group grid gap-3">
             {doctorsArray.map((doctor) => (

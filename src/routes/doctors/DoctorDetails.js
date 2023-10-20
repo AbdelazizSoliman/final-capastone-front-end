@@ -15,18 +15,23 @@ const DoctorDetails = () => {
   const doctor = useSelector((state) => state.doctors.doctors);
 
   return (
-    <div className="d-flex align-items-center justify-content-center bg-green">
+    <div className="d-flex align-items-center justify-content-center bg-green" style={{height: '100vh'}}>
       <SideNav />
-      <div className="home_component">
-        <div>
-          <img height="150px" width="150px" src={doctor.picture} alt="" />
+      <div className="row p-4" style={{width: '80vw', height: '100%'}}>
+        <div className="col" style={{height: '100%'}}>
+          <img width="100%" height="100%" src={doctor.picture} alt="" className='rounded' />
+        </div>
+        <div className="col px-5 d-flex flex-column gap-3">
           <h2>{doctor.name}</h2>
-          <p>{doctor.price}</p>
-          <p>{doctor.specialization_name}</p>
-          <p>{doctor.phone_number}</p>
+          <p className='btn btn-light d-flex justify-content-between px-3'><span>Specialization</span> <span>{doctor.specialization_name}</span></p>
+          <p className='d-flex justify-content-between px-3'><span>Phone number</span><span>{doctor.phone_number}</span></p>
+          <p className='btn btn-light d-flex justify-content-between px-3'><span>Price</span><span>{doctor.price}</span></p>
+          <p className='d-flex justify-content-between px-3'><span>Available from</span><span>{doctor.time_start}</span></p>
+          <p className='d-flex justify-content-between px-3'><span>Available until</span><span>{doctor.time_end}</span></p>
           <Link
             to={`/doctors/details/${id}/appointments/new?doctorName=${doctor.name}`}
-            className="btn btn-primary"
+            className="btn btn-primary rounded-pill d-flex align-items-center justify-content-center text-lg fw-bold"
+            style={{width: '50%', height: '4rem'}}
           >
             Reserve
           </Link>

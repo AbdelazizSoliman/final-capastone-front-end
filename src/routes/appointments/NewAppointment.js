@@ -41,15 +41,6 @@ const NewAppointment = () => {
       || appointmentData.patient_id.length === 0
     ) {
       toast.warn('Please fill in all fields');
-    }
-
-    if (!appointmentData.patient_id) {
-      toast.warn('Selected doctor not found');
-      return;
-    }
-
-    if (!appointmentData.patient_id) {
-      toast.warn('Selected patient not found');
       return;
     }
 
@@ -91,87 +82,85 @@ const NewAppointment = () => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center bg-green">
+    <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
       <SideNav />
-      <div className="home_component">
-        <form>
-          <h2>Create New Appointment</h2>
-          {error && <p>{error}</p>}
-          <div className="form-group">
-            <div>Date of Appointment</div>
-            <input
-              type="date"
-              className="form-control"
-              name="date_of_appointment" // Updated field name
-              value={appointmentData.date_of_appointment} // Updated field name
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <div>Time of Appointment</div>
-            <input
-              type="time"
-              className="form-control"
-              name="time_of_appointment" // Updated field name
-              value={appointmentData.time_of_appointment} // Updated field name
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <div>Select a City</div>
-            <select
-              className="form-select"
-              name="city"
-              value={appointmentData.city}
-              onChange={handleInputChange}
-            >
-              <option value="">Select a city</option>
-              <option value="Cairo">Cairo</option>
-              <option value="Marrakech">Marrakech</option>
-              {/* Add more cities as needed */}
-            </select>
-          </div>
-          <div className="form-group">
-            <div>Select a Doctor</div>
-            <select
-              className="form-select"
-              name="doctor_id"
-              value={appointmentData.doctor_id}
-              onChange={handleInputChange}
-            >
-              <option value="">Select a doctor</option>
-              {doctors.map((doctor) => (
-                <option key={doctor.id} value={doctor.id}>
-                  {doctor.name}
-                </option>
-              ))}
-            </select>
-          </div>
+      <div className="d-flex flex-column align-items-center" style={{ width: '80vw' }}>
+      <form className="p-4">
+  <h2 className="mb-4">Create New Appointment</h2>
+  {error && <p className="text-danger">{error}</p>}
+  <div className="mb-3">
+    <label className="form-label">Date of Appointment</label>
+    <input
+      type="date"
+      className="form-control"
+      name="date_of_appointment"
+      value={appointmentData.date_of_appointment}
+      onChange={handleInputChange}
+    />
+  </div>
+  <div className="mb-3">
+    <label className="form-label">Time of Appointment</label>
+    <input
+      type="time"
+      className="form-control"
+      name="time_of_appointment"
+      value={appointmentData.time_of_appointment}
+      onChange={handleInputChange}
+    />
+  </div>
+  <div className="mb-3">
+    <select
+      className="form-select"
+      name="city"
+      value={appointmentData.city}
+      onChange={handleInputChange}
+    >
+      <option value="">Select a city</option>
+      <option value="Cairo">Cairo</option>
+      <option value="Marrakech">Marrakech</option>
+      {/* Add more cities as needed */}
+    </select>
+  </div>
+  <div className="mb-3">
+    <select
+      className="form-select"
+      name="doctor_id"
+      value={appointmentData.doctor_id}
+      onChange={handleInputChange}
+    >
+      {doctors.map((doctor) => (
+        <option key={doctor.id} value={doctor.id}>
+          {doctor.name}
+        </option>
+      ))}
+    </select>
+  </div>
 
-          <div className="form-group">
-            <div>Select a Patient</div>
-            <select
-              className="form-select"
-              name="patient_id"
-              value={appointmentData.patient_id}
-              onChange={handleInputChange}
-            >
-              <option value="">Select a patient</option>
-              {patients.map((patient) => (
-                <option key={patient.id} value={patient.id}>
-                  {patient.username}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleCreateAppointment}
-          >
-            Create Appointment
-          </button>
-        </form>
+  <div className="mb-3">
+    <select
+      className="form-select"
+      name="patient_id"
+      value={appointmentData.patient_id}
+      onChange={handleInputChange}
+    >
+      <option value="">Select a patient</option>
+      {patients.map((patient) => (
+        <option key={patient.id} value={patient.id}>
+          {patient.username}
+        </option>
+      ))}
+    </select>
+  </div>
+  <button
+    type="submit"
+    className="btn btn-primary"
+    onClick={handleCreateAppointment}
+    style={{width: '100%'}}
+  >
+    Create Appointment
+  </button>
+</form>
+
       </div>
     </div>
   );
