@@ -24,6 +24,7 @@ const doctorsSlice = createSlice({
       .addCase(addDoctor.fulfilled, (state, action) => {
         state.isLoading = false;
         state.doctors = action.payload;
+        console/log(state.doctors);
         state.error = null;
       })
       .addCase(addDoctor.rejected, (state, action) => {
