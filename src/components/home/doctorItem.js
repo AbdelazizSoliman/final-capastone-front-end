@@ -1,32 +1,34 @@
+// DoctorItem.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
 
 const DoctorItem = ({
-  itemid, name, specialization, timestart, timeend,
-}) => (
+  itemid, name, timestart, timeend,
+}) => {
+  // Extract only the hours from the time strings
+  const startTime = timestart.slice(11, 16); // Assuming format is HH:mm
+  const endTime = timeend.slice(11, 16);
 
-  <div className="home_item">
-    <Link to={`/doctors/details/1${itemid}`}>
-      <img src="https://picsum.photos/1000/1000" alt="Error" width="80%" />
-      <h5>
-        {name}
-      </h5>
-    </Link>
-    <p>{specialization}</p>
-    <p>Start</p>
-    <p>{timestart}</p>
-    <p>End</p>
-    <p>{timeend}</p>
-  </div>
-
-);
+  return (
+    <div className="d-flex flex-column align-items-center border-2 rounded p-3 bg-success-subtle gap-2">
+      <Link to={`/doctors/details/${itemid}`}>
+        <img
+          src="https://picsum.photos/200/200" // Adjust image source and dimensions
+          alt="Doctor"
+          className="rounded border-2"
+          style={{width: '15.5rem'}}
+        />
+      </Link>
+      <h5 className='text-secondary'>{name}</h5>
+      <p className='text-success fw-bold'>Start Time: {startTime}</p>
+      <p className='text-danger fw-bold'>End Time: {endTime}</p>
+    </div>
+  );
+};
 
 DoctorItem.propTypes = {
   itemid: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  specialization: PropTypes.string.isRequired,
   timestart: PropTypes.string.isRequired,
   timeend: PropTypes.string.isRequired,
 };
