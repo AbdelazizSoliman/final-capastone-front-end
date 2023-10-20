@@ -51,7 +51,7 @@ const NewAppointmentForm = () => {
     }
 
     const selectedDoc = doctors.find((doctor) => doctor.name === appointmentData.doctorName);
-    const selectPat = patients.find((patient) => patient.name === appointmentData.patientName);
+    const selectPat = patients.find((patient) => patient.username === appointmentData.patientName);
 
     if (!selectedDoc) {
       toast.warn('Selected doctor not found');
@@ -154,8 +154,8 @@ const NewAppointmentForm = () => {
             >
               <option value="">Select a patient</option>
               {patients.map((patient) => (
-                <option key={patient.id} value={patient.name}>
-                  {patient.name}
+                <option key={patient.id} value={patient.username}>
+                  {patient.username}
                 </option>
               ))}
             </select>
