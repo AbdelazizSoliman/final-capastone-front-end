@@ -1,0 +1,63 @@
+li:hover {
+  background-color: #6dae81;
+  cursor: pointer;
+}
+
+li a {
+  color: #00796b;
+}
+
+li:hover a {
+  color: white;
+}
+
+.logout {
+  margin-top: 25vh;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .btn-outline-success {
+  margin-top: 10rem;
+}
+
+.delete-item:hover {
+  background-color: #00caaf7c;
+}
+
+.specialization {
+  color: #698683;
+  font-size: medium;
+  margin-left: 1rem;
+}
+
+.custom-link:active {
+  color: #080808;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: #080808;
+  background-color: #17c208;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+} */
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+
+/* @media (max-width: 800px) {
+  .App {
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    gap: 3px;
+    overflow: hidden;
+  }
+} */
