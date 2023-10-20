@@ -36,51 +36,63 @@ const AppointmentsList = () => {
   };
 
   return (
-    <div className="h-screen d-flex">
+    <div className="d-flex" style={{ width: '100vw' }}>
       <SideNav />
-
-      <div className="p-4" style={{ flex: '1' }}>
-        <h3 className="text-primary">Appointments List</h3>
-        <div className="d-flex align-items-center" style={{ overflowY: 'hidden' }}>
-          <button className="btn btn-link" type="button" onClick={() => shiftAppointments('left')}>
-            <i className="fa fa-chevron-left" style={{ fontSize: '1.5em', color: '#25c804' }} />
+      <div className="d-flex flex-column align-items-center gap-4 mt-5" style={{ width: '80vw' }}>
+        <div className="d-flex flex-column align-items-center">
+          <h1 className="fw-bold">Appointments List</h1>
+          <p className="text-secondary">Here are your appointments</p>
+        </div>
+        <div className="slideshow d-flex align-items-center" style={{ width: '100%' }}>
+          <button
+            type="button"
+            className="btn btn-light slide-button m-2"
+            onClick={() => shiftAppointments('left')}
+            aria-label="Slide left"
+            style={{ height: '10vh', width: '8%' }}
+          >
+            <i className="fa fa-chevron-left pl-3" />
           </button>
-          <div className="horizontal-scroll" style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
-            <ul className="list-group d-flex flex-row">
-              {displayedAppointments.map((appointment) => (
-                <li key={appointment.id} className="list-group-item m-2 p-2" style={{ width: '300px' }}>
-                  <h5 className="text-info">Appointment Details:</h5>
-                  <p>
-                    <strong className="text-warning">Date:</strong>
-                    {' '}
-                    {appointment.date_of_appointment}
-                  </p>
-                  <p>
-                    <strong className="text-success">Time:</strong>
-                    {' '}
-                    {appointment.time_of_appointment}
-                  </p>
-                  <p>
-                    <strong className="text-primary">City:</strong>
-                    {' '}
-                    {appointment.city}
-                  </p>
-                  <p>
-                    <strong className="text-primary">Doctor:</strong>
-                    {' '}
-                    {appointment.doctor_name}
-                  </p>
-                  <p>
-                    <strong className="text-primary">Patient:</strong>
-                    {' '}
-                    {appointment.patient_name}
-                  </p>
-                </li>
-              ))}
-            </ul>
+          <div className="slideshowSlider d-flex gap-2" id="slider" style={{ width: '80%' }}>
+            {displayedAppointments.map((appointment) => (
+              <div key={appointment.id} className="card m-2 p-3 d-flex flex-column gap-4" style={{ width: '300px' }}>
+                <h5 className="card-title text-info">Appointment Details</h5>
+                <p className="card-text">
+                  <strong className="text-warning">Date:</strong>
+                  {' '}
+                  {appointment.date_of_appointment}
+                </p>
+                <p className="card-text">
+                  <strong className="text-warning">Time:</strong>
+                  {' '}
+                  {appointment.time_of_appointment}
+                </p>
+                <p className="card-text">
+                  <strong className="text-warning">City:</strong>
+                  {' '}
+                  {appointment.city}
+                </p>
+                <p className="card-text">
+                  <strong className="text-warning">Doctor:</strong>
+                  {' '}
+                  {appointment.doctor_name}
+                </p>
+                <p className="card-text">
+                  <strong className="text-warning">Patient:</strong>
+                  {' '}
+                  {appointment.patient_name}
+                </p>
+              </div>
+            ))}
           </div>
-          <button className="btn btn-link" type="button" onClick={() => shiftAppointments('right')}>
-            <i className="fa fa-chevron-right" style={{ fontSize: '2em', color: '#25c804' }} />
+          <button
+            type="button"
+            className="btn btn-light slide-button m-2"
+            onClick={() => shiftAppointments('right')}
+            aria-label="Slide right"
+            style={{ height: '10vh', width: '8%' }}
+          >
+            <i className="fa fa-chevron-right pl-3" />
           </button>
         </div>
       </div>

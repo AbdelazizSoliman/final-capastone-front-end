@@ -11,11 +11,11 @@ const NewAppointment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [appointmentData, setAppointmentData] = useState({
-    date_of_appointment: '', // Updated field name
-    time_of_appointment: '', // Updated field name
+    date_of_appointment: '',
+    time_of_appointment: '',
     city: '',
-    doctor_id: '', // Selected doctor's name
-    patient_id: '', // Selected patient's name
+    doctor_id: '',
+    patient_id: '',
   });
   const { doctors } = useSelector((store) => store.doctors);
   const { patients } = useSelector((store) => store.patients);
@@ -34,22 +34,13 @@ const NewAppointment = () => {
     e.preventDefault();
 
     if (
-      appointmentData.date_of_appointment.length === 0 // Updated field name
-      || appointmentData.time_of_appointment.length === 0 // Updated field name
+      appointmentData.date_of_appointment.length === 0
+      || appointmentData.time_of_appointment.length === 0
       || appointmentData.city.length === 0
       || appointmentData.doctor_id.length === 0
       || appointmentData.patient_id.length === 0
     ) {
       toast.warn('Please fill in all fields');
-    }
-
-    if (!appointmentData.patient_id) {
-      toast.warn('Selected doctor not found');
-      return;
-    }
-
-    if (!appointmentData.patient_id) {
-      toast.warn('Selected patient not found');
       return;
     }
 
@@ -65,8 +56,8 @@ const NewAppointment = () => {
 
       // Reset the form
       setAppointmentData({
-        date_of_appointment: '', // Updated field name
-        time_of_appointment: '', // Updated field name
+        date_of_appointment: '',
+        time_of_appointment: '',
         city: '',
         doctor_id: '',
         patient_id: '',
@@ -91,34 +82,35 @@ const NewAppointment = () => {
   };
 
   return (
-    <div className="d-flex align-items-center justify-content-center bg-green">
+    <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
       <SideNav />
-      <div className="home_component">
-        <form>
-          <h2>Create New Appointment</h2>
-          {error && <p>{error}</p>}
-          <div className="form-group">
-            <div>Date of Appointment</div>
+      <div className="d-flex flex-column align-items-center" style={{ width: '80vw' }}>
+        <form className="p-4">
+          <h2 className="mb-4">Create New Appointment</h2>
+          {error && <p className="text-danger">{error}</p>}
+          <div className="mb-3">
+            <p className="form-label">Date of Appointment</p>
             <input
               type="date"
               className="form-control"
-              name="date_of_appointment" // Updated field name
-              value={appointmentData.date_of_appointment} // Updated field name
+              name="date_of_appointment"
+              value={appointmentData.date_of_appointment}
               onChange={handleInputChange}
+              id="date-appointment" // Add the id attribute
             />
           </div>
-          <div className="form-group">
-            <div>Time of Appointment</div>
+          <div className="mb-3">
+            <p className="form-label">Time of Appointment</p>
             <input
               type="time"
               className="form-control"
-              name="time_of_appointment" // Updated field name
-              value={appointmentData.time_of_appointment} // Updated field name
+              name="time_of_appointment"
+              value={appointmentData.time_of_appointment}
               onChange={handleInputChange}
+              id="time" // Add the id attribute
             />
           </div>
-          <div className="form-group">
-            <div>Select a City</div>
+          <div className="mb-3">
             <select
               className="form-select"
               name="city"
@@ -131,15 +123,13 @@ const NewAppointment = () => {
               {/* Add more cities as needed */}
             </select>
           </div>
-          <div className="form-group">
-            <div>Select a Doctor</div>
+          <div className="mb-3">
             <select
               className="form-select"
               name="doctor_id"
               value={appointmentData.doctor_id}
               onChange={handleInputChange}
             >
-              <option value="">Select a doctor</option>
               {doctors.map((doctor) => (
                 <option key={doctor.id} value={doctor.id}>
                   {doctor.name}
@@ -147,9 +137,7 @@ const NewAppointment = () => {
               ))}
             </select>
           </div>
-
-          <div className="form-group">
-            <div>Select a Patient</div>
+          <div className="mb-3">
             <select
               className="form-select"
               name="patient_id"
@@ -168,6 +156,7 @@ const NewAppointment = () => {
             type="submit"
             className="btn btn-primary"
             onClick={handleCreateAppointment}
+            style={{ width: '100%' }}
           >
             Create Appointment
           </button>
