@@ -21,7 +21,7 @@ const AppointmentsList = () => {
     axios.get('http://localhost:3000/api/v1/appointments')
       .then((response) => {
         setAppointmentsArray(response.data);
-        setDisplayedAppointments(response.data.slice(0, numberOfAppointmentsToShow)); // Initially display 3 appointments
+        setDisplayedAppointments(response.data.slice(0, numberOfAppointmentsToShow));
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -34,12 +34,12 @@ const AppointmentsList = () => {
     setCurrentIndex(newIndex);
     const endIndex = newIndex + numberOfAppointmentsToShow;
     const displayed = [];
-    
-    for (let i = 0; i < numberOfAppointmentsToShow; i++) {
+
+    for (let i = 0; i < numberOfAppointmentsToShow; i += 1) {
       const appointment = appointmentsArr[(endIndex + i) % appointmentsArr.length];
       displayed.push(appointment);
     }
-    
+
     setDisplayedAppointments(displayed);
   };
 
